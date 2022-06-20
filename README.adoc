@@ -7,8 +7,10 @@ toc::[]
 
 A free, open source tool you can use to build a blog using GitHub Pages and http://asciidoctor.org/docs/user-manual/[AsciiDoc].
 
-== What Is HubPress?
 
+WARNING: The project is not actively maintained anymore.
+
+== What Is HubPress?
 image::https://cloud.githubusercontent.com/assets/2006548/23680524/d7cbf68e-038b-11e7-8465-5c70abd852e1.gif[]
 
 HubPress is a web application that makes it easy for you to maintain a blog. It provides the following features:
@@ -67,7 +69,7 @@ image:http://hubpress.io/img/home-install.png[Install complete,300]
 
 ==== I am using my GitHub Pages domain already, or I want to use a custom domain
 
-If you are already using your want your blog to be available on a custom domain, or you are _already using your GitHub Pages domain_ to host another project, some extra configuration is required.
+If you want your blog to be available on a custom domain, or you are _already using your GitHub Pages domain_ to host another project, some extra configuration is required.
 
 You need to set your blog up on a sub-domain of your GitHub Pages site.
 
