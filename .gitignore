@@ -1,0 +1,6 @@
+# Local Development
+node_modules/
+.DS_Store
+
+# Confidential Planning Documentation
+PLAN_*.md
