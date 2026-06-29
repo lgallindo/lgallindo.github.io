@@ -4,3 +4,6 @@ node_modules/
 
 # Confidential Planning Documentation
 PLAN_*.md
+docs/design_state.json
+docs/analysis_*.md
+
