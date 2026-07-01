@@ -1,0 +1,59 @@
+---
+const { label, labels } = Astro.props as {
+  label: string;
+  labels: {
+    phosphor: string;
+    modem: string;
+    utilitarian: string;
+  };
+};
+
+const modes = [
+  { value: "phosphor", label: labels.phosphor },
+  { value: "modem", label: labels.modem },
+  { value: "utilitarian", label: labels.utilitarian },
+];
+---
+
+<form class="mode-switch" aria-label={label}>
+  <fieldset>
+    <legend>{label}</legend>
+    {modes.map((mode) => (
+      <label>
+        <input type="radio" name="mode" value={mode.value} checked={mode.value === "phosphor"} />
+        <span>{mode.label}</span>
+      </label>
+    ))}
+  </fieldset>
+</form>
+<script is:inline>
+  (() => {
+    const root = document.documentElement;
+    const controls = Array.from(document.querySelectorAll('input[name="mode"]'));
+    const allowed = new Set(["phosphor", "modem", "utilitarian"]);
+
+    function applyMode(mode) {
+      if (!allowed.has(mode)) return;
+      root.dataset.mode = mode;
+      for (const control of controls) {
+        control.checked = control.value === mode;
+      }
+      try {
+        localStorage.setItem("interaction-mode", mode);
+      } catch {
+        // Preference persistence is optional progressive enhancement.
+      }
+    }
+
+    try {
+      const stored = localStorage.getItem("interaction-mode");
+      if (stored) applyMode(stored);
+    } catch {
+      // The form still works for the current page session.
+    }
+
+    for (const control of controls) {
+      control.addEventListener("change", () => applyMode(control.value));
+    }
+  })();
+</script>

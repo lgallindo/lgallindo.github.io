@@ -1,0 +1,38 @@
+---
+import ModeSwitch from "../chrome/ModeSwitch.astro";
+import { localeLabels, localizedPath, publicLocales, type PublicLocaleCode } from "../../i18n/locales";
+
+const { locale, nav, listed = true } = Astro.props as {
+  locale: PublicLocaleCode;
+  nav: { label: string; href: string }[];
+  listed?: boolean;
+  primaryLabel: string;
+  languageLabel: string;
+  modeLabel: string;
+  modes: {
+    phosphor: string;
+    modem: string;
+    utilitarian: string;
+  };
+};
+---
+
+<nav class="status-line" aria-label={Astro.props.primaryLabel}>
+  <ul class="status-line__nav">
+    {nav.map((item) => (
+      <li><a href={item.href}>{item.label}</a></li>
+    ))}
+  </ul>
+  {listed && (
+    <ul class="status-line__locales" aria-label={Astro.props.languageLabel}>
+      {publicLocales.map((code) => (
+        <li>
+          <a href={localizedPath(code, Astro.url.pathname.replace(/^\/(en_US|pt_BR)/, "") || "/")} aria-current={code === locale ? "page" : undefined}>
+            {localeLabels[code]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  )}
+  <ModeSwitch label={Astro.props.modeLabel} labels={Astro.props.modes} />
+</nav>

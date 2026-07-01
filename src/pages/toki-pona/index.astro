@@ -1,0 +1,29 @@
+---
+import TuiPanel from "../../components/chrome/TuiPanel.astro";
+import "../../styles/global.css";
+import { tokiPonaCopy } from "../../content/site";
+---
+
+<!doctype html>
+<html lang="tok" data-mode="utilitarian">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="description" content={tokiPonaCopy.description} />
+    <title>{tokiPonaCopy.title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">o tawa lipu suli</a>
+    <header class="site-header">
+      <p class="site-header__prompt">jan@lipu:~$</p>
+      <p class="site-header__eyebrow">toki pona</p>
+    </header>
+    <main id="main" class="shell-main">
+      <TuiPanel title={tokiPonaCopy.heading}>
+        <h1>{tokiPonaCopy.heading}</h1>
+        <p>{tokiPonaCopy.intro}</p>
+      </TuiPanel>
+    </main>
+  </body>
+</html>

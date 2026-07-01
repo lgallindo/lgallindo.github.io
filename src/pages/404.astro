@@ -1,0 +1,16 @@
+---
+import TerminalShell from "../layouts/TerminalShell.astro";
+import TuiPanel from "../components/chrome/TuiPanel.astro";
+import { publicCopy } from "../content/site";
+
+const locale = "en_US";
+const copy = publicCopy[locale];
+---
+
+<TerminalShell locale={locale} title={`${copy.notFound.heading} | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
+  <TuiPanel title={copy.notFound.heading}>
+    <h1>{copy.notFound.heading}</h1>
+    <p>{copy.notFound.intro}</p>
+    <p><a href="/en_US/">Return to home</a></p>
+  </TuiPanel>
+</TerminalShell>

@@ -1,9 +1,14 @@
 # Local Development
 node_modules/
+.astro/
+dist/
 .DS_Store
 
 # Confidential Planning Documentation
 PLAN_*.md
 docs/design_state.json
 docs/analysis_*.md
-
+docs/global_references/gstack_*/
+# Local Parser Temp
+.tmp_uv/
+.uvcache/

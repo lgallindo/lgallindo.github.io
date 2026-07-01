@@ -1,0 +1,28 @@
+---
+import TerminalShell from "../../../layouts/TerminalShell.astro";
+import TuiPanel from "../../../components/chrome/TuiPanel.astro";
+import { publicCopy } from "../../../content/site";
+import { publicLocales, type PublicLocaleCode } from "../../../i18n/locales";
+
+export function getStaticPaths() {
+  return publicLocales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as PublicLocaleCode;
+const copy = publicCopy[locale];
+---
+
+<TerminalShell locale={locale} title={`${copy.about.heading} | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
+  <TuiPanel title={copy.about.heading}>
+    <h1>{copy.about.heading}</h1>
+    <p>{copy.about.intro}</p>
+    <ol class="record-list">
+      {copy.about.timeline.map((entry) => (
+        <li>
+          <h2>{entry.title}</h2>
+          <p><strong>{entry.status}</strong> {entry.summary}</p>
+        </li>
+      ))}
+    </ol>
+  </TuiPanel>
+</TerminalShell>

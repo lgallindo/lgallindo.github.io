@@ -1,0 +1,16 @@
+---
+const { as: Element = "section", id, labelledBy, title } = Astro.props as {
+  as?: "section" | "article" | "aside" | "figure" | "blockquote" | "nav";
+  id?: string;
+  labelledBy?: string;
+  title?: string;
+};
+
+const fallbackLabelId = id ? `${id}-label` : undefined;
+const panelLabelId = labelledBy ?? (title ? fallbackLabelId : undefined);
+---
+
+<Element id={id} class="tui-panel" aria-labelledby={panelLabelId}>
+  {title && !labelledBy && fallbackLabelId && <span class="visually-hidden" id={fallbackLabelId}>{title}</span>}
+  <slot />
+</Element>

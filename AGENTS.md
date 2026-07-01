@@ -17,6 +17,26 @@
 - **OP-003 (Tool Utility)**: Tools serve to standardize outputs and handle complexity; they support but do not replace agent reasoning. (GUID-043)
 - **OP-007 (Specific Rules Reference)**: **READ `PROJECT_RULES.md` BEFORE PERFORMING ANY ACTION.** It contains roles, navigation, and specialized policies for this repository.
 - **OP-008 (Template Preservation)**: Keep `AGENTS.md` read-only unless strictly necessary and the user explicitly authorizes a change. New agent documentation should go on the project file (`PROJECT_RULES.md`).
+- **OP-009 (Agent Governance)**: Subagent or persona usage, invocation, creation, editing, auditing, retirement, or maintenance MUST follow `SUBAGENT_PERSONA_RULES.md`. Re-read `SUBAGENT_PERSONA_RULES.md` every time an agent is created or edited, and keep the available-agent list in `PROJECT_RULES.md` updated.
+
+## Session Handoff Standard
+- **SHS-001 (Purpose)**: `SESSION_HANDOFF.md` is the append-only operational continuity log for this workspace. It records what changed, who or which agent did it, when it happened, why it happened, how it was verified, and what remains next.
+- **SHS-002 (Update Timing)**: After every assistant message trailer, append a new timestamped `SESSION_HANDOFF.md` entry unless the user request was purely informational and no project state, decision, tool execution, or task status changed.
+- **SHS-003 (Timestamping)**: Each entry heading MUST use ISO-8601 local time with timezone, e.g. `## [2026-06-29T17:00:28-03:00]`. Referenced external artifacts may additionally include UTC timestamps.
+- **SHS-004 (Agent Self-Identification)**: Each entry MUST identify the actor as `Codex` or as the named subagent/persona plus runtime nickname/id when applicable. If a tool-only action was performed by Codex, state that explicitly.
+- **SHS-005 (Status Labels)**: Each bullet MUST start with one of `[DONE]`, `[NEXT]`, `[TODO]`, `[BLOCKED]`, `[ERROR]`, `[WARN]`, `[NOTE]`, or `[SYSTEM]`. Status labels must describe actual state, not aspiration.
+- **SHS-006 (Technical Detail Minimum)**: For any write or execution, the entry MUST include affected paths, commands or tool classes used, material outputs, verification commands, raw errors or warnings, and side effects such as generated files, ignored files, network access, or package-manager changes.
+- **SHS-007 (Decision Traceability)**: Each non-obvious decision MUST record the rationale, the governing rule or source, and the rejected alternative when material.
+- **SHS-008 (Agent Activity Logging)**: When agents interact, the entry MUST record participants, agent ids/nicknames when available, task scope, output summary, audit findings, and whether the handle was closed.
+- **SHS-009 (Verification Tracking)**: Entries MUST separate verification that passed, verification that failed, and verification not run. Unrun verification needs a reason and residual risk.
+- **SHS-010 (Git Awareness)**: Entries after write operations MUST include a concise `git status` summary or an explicit statement that status was not run and why. Do not claim work is committed unless it is.
+- **SHS-011 (Public/Private Boundary)**: Internal planning, agent context, and “making of the sausage” artifacts may be logged in `SESSION_HANDOFF.md`, but this log and its contents MUST NOT be exposed through public website routes, feeds, sitemaps, search indexes, metadata, or UI.
+
+## Agent Governance
+- **AGOV-001 (Canonical Agent Rules)**: Detailed rules for subagent/persona usage, invocation, creation, editing, auditing, maintenance, interviews, global scope, gstack references, and slash-command replacements live in `SUBAGENT_PERSONA_RULES.md`.
+- **AGOV-002 (Mandatory Re-Read)**: Re-read `SUBAGENT_PERSONA_RULES.md` every time an agent is created or edited.
+- **AGOV-003 (Project Roster)**: Keep the project-visible list of available agents current in `PROJECT_RULES.md`.
+- **AGOV-004 (Cross-Reference Integrity)**: `PROJECT_RULES.md` must explicitly reference `SUBAGENT_PERSONA_RULES.md`, and `SUBAGENT_PERSONA_RULES.md` must explicitly reference `PROJECT_RULES.md`.
 
 ## Technical Constraints
 - **TECH-001 (Shell Safety)**: Use explicit double quotes for string/message handling in terminals to avoid expansion or escaping errors. (GUID-049)

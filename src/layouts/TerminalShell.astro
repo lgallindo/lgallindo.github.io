@@ -1,0 +1,61 @@
+---
+import StatusLine from "../components/navigation/StatusLine.astro";
+import "../styles/global.css";
+import { publicLocales, localizedPath, type PublicLocaleCode } from "../i18n/locales";
+import { publicCopy } from "../content/site";
+
+const {
+  locale,
+  title,
+  description,
+  eyebrow,
+  nav,
+  listed = true,
+} = Astro.props as {
+  locale: PublicLocaleCode;
+  title: string;
+  description: string;
+  eyebrow: string;
+  nav: { label: string; href: string }[];
+  listed?: boolean;
+};
+
+const copy = publicCopy[locale];
+const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en_US|pt_BR)(?=\/|$)/, "") || "/";
+---
+
+<!doctype html>
+<html lang={locale.replace("_", "-")} data-mode="phosphor">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    {listed && publicLocales.map((code) => (
+      <link rel="alternate" hreflang={code.replace("_", "-")} href={new URL(localizedPath(code, pathWithoutLocale), Astro.site)} />
+    ))}
+    {listed && <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />}
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{copy.shell.skipToMain}</a>
+    <header class="site-header">
+      <p class="site-header__prompt">lgallindo@web:~$</p>
+      <p class="site-header__eyebrow">{eyebrow}</p>
+    </header>
+    <StatusLine
+      locale={locale}
+      nav={nav}
+      listed={listed}
+      primaryLabel={copy.shell.primaryNavLabel}
+      languageLabel={copy.shell.languageNavLabel}
+      modeLabel={copy.shell.modeLabel}
+      modes={copy.modes}
+    />
+    <main id="main" class="shell-main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>{copy.shell.footer}</p>
+    </footer>
+  </body>
+</html>
