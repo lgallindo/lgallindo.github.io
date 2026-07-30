@@ -12,20 +12,10 @@ const locale = Astro.params.locale as PublicLocaleCode;
 const copy = publicCopy[locale];
 ---
 
-<TerminalShell locale={locale} title={`${copy.blog.heading} | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
-  <TuiPanel title={copy.blog.heading}>
-    <h1>{copy.blog.heading}</h1>
-    <p>{copy.blog.intro}</p>
-    <ol class="record-list">
-      {copy.blog.posts.map((post) => (
-        <li>
-          <article>
-            <h2>{post.title}</h2>
-            <p><time datetime={post.date}>{post.date}</time></p>
-            <p>{post.summary}</p>
-          </article>
-        </li>
-      ))}
-    </ol>
+<TerminalShell locale={locale} title={`${copy.emptySection.heading} | ${copy.title}`} description={copy.description} nav={copy.nav}>
+  <TuiPanel title={copy.emptySection.heading}>
+    <h1>{copy.emptySection.heading}</h1>
+    <p>{copy.emptySection.intro}</p>
+    <p><a href={`/${locale}/`}>{copy.shell.returnHome}</a></p>
   </TuiPanel>
 </TerminalShell>

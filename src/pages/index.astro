@@ -7,13 +7,13 @@ const locale = "en_US";
 const copy = publicCopy[locale];
 ---
 
-<TerminalShell locale={locale} title={copy.title} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
+<TerminalShell locale={locale} title={copy.title} description={copy.description} nav={copy.nav}>
   <TuiPanel id="locale-gateway" title={copy.gateway.heading} as="nav">
-    <h1>{copy.title}</h1>
+    <h1>{copy.gateway.heading}</h1>
     <p>{copy.gateway.intro}</p>
     <ul class="command-list">
-      <li><a href="/en_US/">LANG=en_US</a></li>
-      <li><a href="/pt_BR/">LANG=pt_BR</a></li>
+      <li><a href="/en_US/">English</a></li>
+      <li><a href="/pt_BR/">Português</a></li>
     </ul>
   </TuiPanel>
 </TerminalShell>

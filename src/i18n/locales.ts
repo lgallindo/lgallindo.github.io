@@ -6,9 +6,9 @@ export const defaultLocale: PublicLocaleCode = "en_US";
 export const secretLocale: LocaleCode = "tok";
 
 export const localeLabels: Record<LocaleCode, string> = {
-  en_US: "LANG=en_US",
-  pt_BR: "LANG=pt_BR",
-  tok: "LANG=tok",
+  en_US: "en",
+  pt_BR: "pt",
+  tok: "tok",
 };
 
 export function isPublicLocale(locale: string): locale is PublicLocaleCode {

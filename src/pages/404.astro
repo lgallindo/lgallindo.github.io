@@ -7,10 +7,10 @@ const locale = "en_US";
 const copy = publicCopy[locale];
 ---
 
-<TerminalShell locale={locale} title={`${copy.notFound.heading} | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
+<TerminalShell locale={locale} title={`${copy.notFound.heading} | ${copy.title}`} description={copy.description} nav={copy.nav}>
   <TuiPanel title={copy.notFound.heading}>
     <h1>{copy.notFound.heading}</h1>
     <p>{copy.notFound.intro}</p>
-    <p><a href="/en_US/">Return to home</a></p>
+    <p><a href="/en_US/">{copy.shell.returnHome}</a></p>
   </TuiPanel>
 </TerminalShell>

@@ -8,14 +8,12 @@ const {
   locale,
   title,
   description,
-  eyebrow,
   nav,
   listed = true,
 } = Astro.props as {
   locale: PublicLocaleCode;
   title: string;
   description: string;
-  eyebrow: string;
   nav: { label: string; href: string }[];
   listed?: boolean;
 };
@@ -35,13 +33,10 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en_US|pt_BR)(?=\/|$)/,
       <link rel="alternate" hreflang={code.replace("_", "-")} href={new URL(localizedPath(code, pathWithoutLocale), Astro.site)} />
     ))}
     {listed && <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />}
+    <link id="plain-theme-css" rel="stylesheet" href="/vendor/simple.min.css" disabled />
   </head>
   <body>
     <a class="skip-link" href="#main">{copy.shell.skipToMain}</a>
-    <header class="site-header">
-      <p class="site-header__prompt">lgallindo@web:~$</p>
-      <p class="site-header__eyebrow">{eyebrow}</p>
-    </header>
     <StatusLine
       locale={locale}
       nav={nav}
@@ -51,11 +46,11 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en_US|pt_BR)(?=\/|$)/,
       modeLabel={copy.shell.modeLabel}
       modes={copy.modes}
     />
+    <header class="site-header">
+      <p class="site-header__title">{copy.title}</p>
+    </header>
     <main id="main" class="shell-main">
       <slot />
     </main>
-    <footer class="site-footer">
-      <p>{copy.shell.footer}</p>
-    </footer>
   </body>
 </html>

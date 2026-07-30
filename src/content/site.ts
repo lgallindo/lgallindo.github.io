@@ -5,28 +5,30 @@ type NavItem = {
   href: string;
 };
 
-type Project = {
-  title: string;
-  status: string;
-  summary: string;
+type BuildRunBlock = {
+  heading: string;
+  intro?: string;
+  commands: string[];
 };
 
-type Post = {
+type Project = {
   title: string;
-  date: string;
   summary: string;
+  repoUrl: string;
+  repoLabel: string;
+  status: string;
+  prerequisites: string[];
+  sections: BuildRunBlock[];
 };
 
 type PageCopy = {
   title: string;
   description: string;
-  eyebrow: string;
   shell: {
     skipToMain: string;
     primaryNavLabel: string;
     languageNavLabel: string;
     modeLabel: string;
-    footer: string;
     returnHome: string;
   };
   modes: {
@@ -38,7 +40,6 @@ type PageCopy = {
   home: {
     heading: string;
     intro: string;
-    commands: NavItem[];
   };
   gateway: {
     heading: string;
@@ -47,185 +48,204 @@ type PageCopy = {
   projects: {
     heading: string;
     intro: string;
+    prerequisitesHeading: string;
     items: Project[];
-  };
-  blog: {
-    heading: string;
-    intro: string;
-    posts: Post[];
-  };
-  about: {
-    heading: string;
-    intro: string;
-    timeline: Project[];
   };
   notFound: {
     heading: string;
     intro: string;
   };
+  emptySection: {
+    heading: string;
+    intro: string;
+  };
+};
+
+const arclengthEn: Project = {
+  title: "ArclengthContinuation",
+  summary:
+    "A copyleft-oriented fork of Continue for AI-assisted development across the CLI, VS Code, and JetBrains. Work in progress; no releases yet.",
+  repoUrl: "https://github.com/lgallindo/arclengthcontinuation",
+  repoLabel: "github.com/lgallindo/arclengthcontinuation",
+  status: "WIP",
+  prerequisites: [
+    "bun",
+    "Node-compatible toolchain for workspace packages",
+    "JDK 21 for the IntelliJ plugin build (wrapper targets JVM 17 bytecode)",
+  ],
+  sections: [
+    {
+      heading: "Clone",
+      commands: [
+        "git clone https://github.com/lgallindo/arclengthcontinuation.git",
+        "cd arclengthcontinuation",
+      ],
+    },
+    {
+      heading: "Build",
+      intro: "Verified baseline from the project README:",
+      commands: [
+        "cd packages/continue-sdk/typescript",
+        "bun run build",
+        "cd ../../../extensions/cli",
+        "bun run build",
+        "cd ../vscode",
+        "bun run esbuild",
+        "cd ../intellij",
+        "JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 \\",
+        'GRADLE_USER_HOME="$PWD/.gradle-home" \\',
+        "./gradlew buildPlugin --stacktrace",
+      ],
+    },
+    {
+      heading: "Run",
+      intro:
+        "Prefer local build output. Published install scripts may target other org URLs.",
+      commands: [
+        "cd extensions/cli",
+        "bun run start",
+        "# or: node dist/alc.js",
+        "# VS Code: after bun run esbuild in extensions/vscode,",
+        "# package/install locally; no marketplace release yet.",
+      ],
+    },
+  ],
+};
+
+const arclengthPt: Project = {
+  title: "ArclengthContinuation",
+  summary:
+    "Fork copyleft-oriented do Continue para desenvolvimento assistido por IA no CLI, VS Code e JetBrains. Em progresso; sem releases ainda.",
+  repoUrl: "https://github.com/lgallindo/arclengthcontinuation",
+  repoLabel: "github.com/lgallindo/arclengthcontinuation",
+  status: "WIP",
+  prerequisites: [
+    "bun",
+    "Toolchain compatível com Node para os pacotes do workspace",
+    "JDK 21 para o build do plugin IntelliJ (bytecode JVM 17)",
+  ],
+  sections: [
+    {
+      heading: "Clone",
+      commands: [
+        "git clone https://github.com/lgallindo/arclengthcontinuation.git",
+        "cd arclengthcontinuation",
+      ],
+    },
+    {
+      heading: "Build",
+      intro: "Baseline verificada no README do projeto:",
+      commands: [
+        "cd packages/continue-sdk/typescript",
+        "bun run build",
+        "cd ../../../extensions/cli",
+        "bun run build",
+        "cd ../vscode",
+        "bun run esbuild",
+        "cd ../intellij",
+        "JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 \\",
+        'GRADLE_USER_HOME="$PWD/.gradle-home" \\',
+        "./gradlew buildPlugin --stacktrace",
+      ],
+    },
+    {
+      heading: "Run",
+      intro:
+        "Prefira o build local. Scripts de instalação publicados podem apontar para outras orgs.",
+      commands: [
+        "cd extensions/cli",
+        "bun run start",
+        "# ou: node dist/alc.js",
+        "# VS Code: após bun run esbuild em extensions/vscode,",
+        "# empacote/instale localmente; sem release na marketplace ainda.",
+      ],
+    },
+  ],
 };
 
 export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
   en_US: {
     title: "lgallindo.github.io",
-    description: "Data engineering, FOSS systems, CAD builds, and technical writing by Luis Gallindo.",
-    eyebrow: "Data engineering / FOSS / maker systems",
+    description: "ArclengthContinuation — build and run notes.",
     shell: {
       skipToMain: "Skip to main content",
       primaryNavLabel: "Primary",
       languageNavLabel: "Language",
-      modeLabel: "Interaction mode",
-      footer: "GPL-minded technical notes for data systems, FOSS work, and practical builds.",
+      modeLabel: "Theme",
       returnHome: "Return to home",
     },
     modes: {
       phosphor: "Phosphor",
       modem: "Modem",
-      utilitarian: "Utilitarian",
+      utilitarian: "Plain",
     },
     nav: [
-      { label: "[1] Home", href: "/en_US/" },
-      { label: "[2] Projects", href: "/en_US/projects/" },
-      { label: "[3] Blog", href: "/en_US/blog/" },
-      { label: "[4] About", href: "/en_US/about/" },
+      { label: "Home", href: "/en_US/" },
+      { label: "Projects", href: "/en_US/projects/" },
     ],
     home: {
-      heading: "Systems notebook",
-      intro:
-        "I build data platforms, inspect software supply chains, and document practical maker systems with a preference for transparent tools.",
-      commands: [
-        { label: "cd projects", href: "/en_US/projects/" },
-        { label: "tail blog", href: "/en_US/blog/" },
-        { label: "whoami", href: "/en_US/about/" },
-      ],
+      heading: "ArclengthContinuation",
+      intro: arclengthEn.summary,
     },
     gateway: {
-      heading: "Select Locale",
-      intro: "Choose the public language for this terminal session.",
+      heading: "Language",
+      intro: "Choose a language.",
     },
     projects: {
       heading: "Projects",
-      intro: "Selected work across data engineering, FOSS maintenance, CAD, and small-game systems.",
-      items: [
-        {
-          title: "Data platform migration notes",
-          status: "active",
-          summary: "Operational patterns for moving analytical workloads without hiding failure modes.",
-        },
-        {
-          title: "Maker CAD bench",
-          status: "field notes",
-          summary: "Parametric parts, repair sketches, and workshop documentation for practical builds.",
-        },
-      ],
-    },
-    blog: {
-      heading: "Blog",
-      intro: "Technical writing for systems that benefit from reproducible notes and explicit tradeoffs.",
-      posts: [
-        {
-          title: "Why portfolio migrations should preserve old artifacts",
-          date: "2026-06-29",
-          summary: "A short note on keeping legacy output available while a new static generator takes over.",
-        },
-      ],
-    },
-    about: {
-      heading: "About",
-      intro:
-        "Luis Gallindo works at the intersection of data engineering, applied automation, and hands-on systems building.",
-      timeline: [
-        {
-          title: "Current focus",
-          status: "now",
-          summary: "Reliable data workflows, reproducible technical writing, and visible engineering decisions.",
-        },
-      ],
+      intro: "One project for now.",
+      prerequisitesHeading: "Prerequisites",
+      items: [arclengthEn],
     },
     notFound: {
       heading: "404",
-      intro: "The requested path is not published in this terminal session.",
+      intro: "Nothing at this path.",
+    },
+    emptySection: {
+      heading: "Not yet",
+      intro: "No content here yet.",
     },
   },
   pt_BR: {
     title: "lgallindo.github.io",
-    description: "Engenharia de dados, sistemas FOSS, CAD e escrita técnica de Luis Gallindo.",
-    eyebrow: "Engenharia de dados / FOSS / sistemas maker",
+    description: "ArclengthContinuation — notas de build e execução.",
     shell: {
       skipToMain: "Pular para o conteúdo principal",
       primaryNavLabel: "Principal",
       languageNavLabel: "Idioma",
-      modeLabel: "Modo de interação",
-      footer: "Notas técnicas com espírito GPL sobre sistemas de dados, trabalho FOSS e construções práticas.",
+      modeLabel: "Tema",
       returnHome: "Voltar ao início",
     },
     modes: {
       phosphor: "Fósforo",
       modem: "Modem",
-      utilitarian: "Utilitário",
+      utilitarian: "Simples",
     },
     nav: [
-      { label: "[1] Início", href: "/pt_BR/" },
-      { label: "[2] Projetos", href: "/pt_BR/projects/" },
-      { label: "[3] Blog", href: "/pt_BR/blog/" },
-      { label: "[4] Sobre", href: "/pt_BR/about/" },
+      { label: "Início", href: "/pt_BR/" },
+      { label: "Projetos", href: "/pt_BR/projects/" },
     ],
     home: {
-      heading: "Caderno de sistemas",
-      intro:
-        "Construo plataformas de dados, examino cadeias de software e documento sistemas maker com preferência por ferramentas transparentes.",
-      commands: [
-        { label: "cd projetos", href: "/pt_BR/projects/" },
-        { label: "tail blog", href: "/pt_BR/blog/" },
-        { label: "whoami", href: "/pt_BR/about/" },
-      ],
+      heading: "ArclengthContinuation",
+      intro: arclengthPt.summary,
     },
     gateway: {
-      heading: "Selecionar idioma",
-      intro: "Escolha o idioma público para esta sessão de terminal.",
+      heading: "Idioma",
+      intro: "Escolha um idioma.",
     },
     projects: {
       heading: "Projetos",
-      intro: "Trabalhos em engenharia de dados, manutenção FOSS, CAD e pequenos sistemas de jogos.",
-      items: [
-        {
-          title: "Notas de migração de plataformas de dados",
-          status: "ativo",
-          summary: "Padrões operacionais para mover cargas analíticas sem esconder modos de falha.",
-        },
-        {
-          title: "Bancada CAD maker",
-          status: "notas de campo",
-          summary: "Peças paramétricas, esboços de reparo e documentação de oficina para construções práticas.",
-        },
-      ],
-    },
-    blog: {
-      heading: "Blog",
-      intro: "Escrita técnica para sistemas que se beneficiam de notas reproduzíveis e escolhas explícitas.",
-      posts: [
-        {
-          title: "Por que migrações de portfólio devem preservar artefatos antigos",
-          date: "2026-06-29",
-          summary: "Uma nota breve sobre manter a saída legada disponível enquanto um novo gerador estático assume.",
-        },
-      ],
-    },
-    about: {
-      heading: "Sobre",
-      intro:
-        "Luis Gallindo atua na interseção entre engenharia de dados, automação aplicada e construção prática de sistemas.",
-      timeline: [
-        {
-          title: "Foco atual",
-          status: "agora",
-          summary: "Fluxos de dados confiáveis, escrita técnica reproduzível e decisões de engenharia visíveis.",
-        },
-      ],
+      intro: "Um projeto por enquanto.",
+      prerequisitesHeading: "Pré-requisitos",
+      items: [arclengthPt],
     },
     notFound: {
       heading: "404",
-      intro: "O caminho solicitado não está publicado nesta sessão de terminal.",
+      intro: "Nada neste caminho.",
+    },
+    emptySection: {
+      heading: "Ainda não",
+      intro: "Sem conteúdo aqui ainda.",
     },
   },
 };

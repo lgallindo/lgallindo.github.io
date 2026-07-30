@@ -1,0 +1,49 @@
+---
+import TuiPanel from "./TuiPanel.astro";
+
+type BuildRunBlock = {
+  heading: string;
+  intro?: string;
+  commands: string[];
+};
+
+type Project = {
+  title: string;
+  summary: string;
+  repoUrl: string;
+  repoLabel: string;
+  status: string;
+  prerequisites: string[];
+  sections: BuildRunBlock[];
+};
+
+const { project, heading, intro, prerequisitesHeading } = Astro.props as {
+  project: Project;
+  heading?: string;
+  intro?: string;
+  prerequisitesHeading: string;
+};
+---
+
+<TuiPanel title={heading ?? project.title}>
+  <article class="project-block">
+    <h1>{heading ?? project.title}</h1>
+    <p class="project-meta"><strong>{project.status}</strong> · <a href={project.repoUrl}>{project.repoLabel}</a></p>
+    <p>{intro ?? project.summary}</p>
+
+    <h2>{prerequisitesHeading}</h2>
+    <ul class="prereq-list">
+      {project.prerequisites.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+
+    {project.sections.map((section) => (
+      <section>
+        <h2>{section.heading}</h2>
+        {section.intro && <p>{section.intro}</p>}
+        <pre><code>{section.commands.join("\n")}</code></pre>
+      </section>
+    ))}
+  </article>
+</TuiPanel>

@@ -18,12 +18,14 @@ const modes = [
 <form class="mode-switch" aria-label={label}>
   <fieldset>
     <legend>{label}</legend>
-    {modes.map((mode) => (
-      <label>
-        <input type="radio" name="mode" value={mode.value} checked={mode.value === "phosphor"} />
-        <span>{mode.label}</span>
-      </label>
-    ))}
+    <div class="mode-switch__options">
+      {modes.map((mode) => (
+        <label class="mode-switch__option">
+          <input type="radio" name="mode" value={mode.value} checked={mode.value === "phosphor"} />
+          <span>{mode.label}</span>
+        </label>
+      ))}
+    </div>
   </fieldset>
 </form>
 <script is:inline>
@@ -31,22 +33,28 @@ const modes = [
     const root = document.documentElement;
     const controls = Array.from(document.querySelectorAll('input[name="mode"]'));
     const allowed = new Set(["phosphor", "modem", "utilitarian"]);
+    const storageKey = "theme-mode";
+    const legacyKey = "interaction-mode";
 
     function applyMode(mode) {
       if (!allowed.has(mode)) return;
       root.dataset.mode = mode;
+      const plainCss = document.getElementById("plain-theme-css");
+      if (plainCss) {
+        plainCss.disabled = mode !== "utilitarian";
+      }
       for (const control of controls) {
         control.checked = control.value === mode;
       }
       try {
-        localStorage.setItem("interaction-mode", mode);
+        localStorage.setItem(storageKey, mode);
       } catch {
         // Preference persistence is optional progressive enhancement.
       }
     }
 
     try {
-      const stored = localStorage.getItem("interaction-mode");
+      const stored = localStorage.getItem(storageKey) || localStorage.getItem(legacyKey);
       if (stored) applyMode(stored);
     } catch {
       // The form still works for the current page session.

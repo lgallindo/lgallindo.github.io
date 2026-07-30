@@ -1,5 +1,6 @@
 ---
 import TerminalShell from "../../../layouts/TerminalShell.astro";
+import ProjectBuildRun from "../../../components/chrome/ProjectBuildRun.astro";
 import TuiPanel from "../../../components/chrome/TuiPanel.astro";
 import { publicCopy } from "../../../content/site";
 import { publicLocales, type PublicLocaleCode } from "../../../i18n/locales";
@@ -10,20 +11,18 @@ export function getStaticPaths() {
 
 const locale = Astro.params.locale as PublicLocaleCode;
 const copy = publicCopy[locale];
+const project = copy.projects.items[0];
 ---
 
-<TerminalShell locale={locale} title={`${copy.projects.heading} | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
+<TerminalShell locale={locale} title={`${copy.projects.heading} | ${copy.title}`} description={copy.description} nav={copy.nav}>
   <TuiPanel title={copy.projects.heading}>
     <h1>{copy.projects.heading}</h1>
     <p>{copy.projects.intro}</p>
-    <ul class="record-list">
-      {copy.projects.items.map((project) => (
-        <li>
-          <h2>{project.title}</h2>
-          <p><strong>Status:</strong> {project.status}</p>
-          <p>{project.summary}</p>
-        </li>
-      ))}
-    </ul>
   </TuiPanel>
+  <ProjectBuildRun
+    project={project}
+    heading={project.title}
+    intro={project.summary}
+    prerequisitesHeading={copy.projects.prerequisitesHeading}
+  />
 </TerminalShell>

@@ -12,7 +12,7 @@ const locale = Astro.params.locale as PublicLocaleCode;
 const copy = publicCopy[locale];
 ---
 
-<TerminalShell locale={locale} title={`${copy.notFound.heading} | ${copy.title}`} description={copy.description} eyebrow={copy.eyebrow} nav={copy.nav}>
+<TerminalShell locale={locale} title={`${copy.notFound.heading} | ${copy.title}`} description={copy.description} nav={copy.nav}>
   <TuiPanel title={copy.notFound.heading}>
     <h1>{copy.notFound.heading}</h1>
     <p>{copy.notFound.intro}</p>
