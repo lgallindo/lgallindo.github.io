@@ -52,5 +52,15 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en_US|pt_BR)(?=\/|$)/,
     <main id="main" class="shell-main">
       <slot />
     </main>
+    <!-- SVG filter referenced by buggy sixel CSS; kept out of layout flow. -->
+    <svg class="visually-hidden" width="0" height="0" aria-hidden="true" focusable="false">
+      <filter id="sixel-posterize" color-interpolation-filters="sRGB">
+        <feComponentTransfer>
+          <feFuncR type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1"></feFuncR>
+          <feFuncG type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1"></feFuncG>
+          <feFuncB type="discrete" tableValues="0 0.25 0.5 0.75 1"></feFuncB>
+        </feComponentTransfer>
+      </filter>
+    </svg>
   </body>
 </html>

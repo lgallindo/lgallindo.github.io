@@ -1,0 +1,33 @@
+---
+type Banner = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
+const { title = "sixel", banners } = Astro.props as {
+  title?: string;
+  banners: Banner[];
+};
+---
+
+<figure class="sixel-deck" aria-label={title}>
+  <figcaption class="sixel-deck__tty">
+    <span class="sixel-deck__prompt">$</span> img2sixel --lossy --colors=16 media/arclength/*.png
+    <span class="sixel-deck__glitch"> # DCS…q broken row checksums ignored</span>
+  </figcaption>
+
+  <div class="sixel-deck__stage">
+    {banners.map((banner, index) => (
+      <div class={`sixel-frame sixel-frame--${index % 2 === 0 ? "a" : "b"}`}>
+        <p class="sixel-frame__meta">ESC P 0 ; 0 ; 8 q &nbsp; {banner.caption}</p>
+        <div class="sixel-frame__viewport">
+          <img class="sixel-frame__img" src={banner.src} alt={banner.alt} width="1090" height="272" loading="lazy" />
+          <div class="sixel-frame__bands" aria-hidden="true"></div>
+          <div class="sixel-frame__noise" aria-hidden="true"></div>
+        </div>
+        <p class="sixel-frame__footer">ST&nbsp;&nbsp;rows dropped: {(index + 1) * 3}&nbsp;&nbsp;palette: buggy-16</p>
+      </div>
+    ))}
+  </div>
+</figure>

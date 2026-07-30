@@ -1,5 +1,6 @@
 ---
 import TuiPanel from "./TuiPanel.astro";
+import SixelBuggy from "./SixelBuggy.astro";
 
 type BuildRunBlock = {
   heading: string;
@@ -17,11 +18,12 @@ type Project = {
   sections: BuildRunBlock[];
 };
 
-const { project, heading, intro, prerequisitesHeading } = Astro.props as {
+const { project, heading, intro, prerequisitesHeading, sixelHeading } = Astro.props as {
   project: Project;
   heading?: string;
   intro?: string;
   prerequisitesHeading: string;
+  sixelHeading?: string;
 };
 ---
 
@@ -30,6 +32,22 @@ const { project, heading, intro, prerequisitesHeading } = Astro.props as {
     <h1>{heading ?? project.title}</h1>
     <p class="project-meta"><strong>{project.status}</strong> · <a href={project.repoUrl}>{project.repoLabel}</a></p>
     <p>{intro ?? project.summary}</p>
+
+    <SixelBuggy
+      title={sixelHeading ?? "banners"}
+      banners={[
+        {
+          src: "/media/arclength/github-readme.png",
+          alt: "ArclengthContinuation README hero banner",
+          caption: "github-readme.png 2176x544",
+        },
+        {
+          src: "/media/arclength/readme.png",
+          alt: "ArclengthContinuation wordmark banner",
+          caption: "readme.png 1500x500",
+        },
+      ]}
+    />
 
     <h2>{prerequisitesHeading}</h2>
     <ul class="prereq-list">
