@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="en-US" data-mode="phosphor"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="ArclengthContinuation — build and run notes."><title>Projects | lgallindo.github.io</title><link rel="alternate" hreflang="en-US" href="https://lgallindo.github.io/en_US/projects/"><link rel="alternate" hreflang="pt-BR" href="https://lgallindo.github.io/pt_BR/projects/"><link rel="alternate" hreflang="x-default" href="https://lgallindo.github.io/"><link id="plain-theme-css" rel="stylesheet" href="/vendor/simple.min.css" disabled><link rel="stylesheet" href="/_astro/TuiPanel.DcHPDIY_.css"></head><body><a class="skip-link" href="#main">Skip to main content</a><nav class="status-line" aria-label="Primary"><ul class="status-line__nav"><li><a href="/en_US/">Home</a></li><li><a href="/en_US/projects/">Projects</a></li></ul><ul class="status-line__locales" aria-label="Language"><li><a href="/en_US/projects/" aria-current="page">en</a></li><li><a href="/pt_BR/projects/">pt</a></li></ul><form class="mode-switch" aria-label="Theme"><fieldset><legend>Theme</legend><div class="mode-switch__options"><label class="mode-switch__option"><input type="radio" name="mode" value="phosphor" checked><span>Phosphor</span></label><label class="mode-switch__option"><input type="radio" name="mode" value="modem"><span>Modem</span></label><label class="mode-switch__option"><input type="radio" name="mode" value="utilitarian"><span>Plain</span></label></div></fieldset></form><script>
+  (() => {
+    const root = document.documentElement;
+    const controls = Array.from(document.querySelectorAll('input[name="mode"]'));
+    const allowed = new Set(["phosphor", "modem", "utilitarian"]);
+    const storageKey = "theme-mode";
+    const legacyKey = "interaction-mode";
+
+    function applyMode(mode) {
+      if (!allowed.has(mode)) return;
+      root.dataset.mode = mode;
+      const plainCss = document.getElementById("plain-theme-css");
+      if (plainCss) {
+        plainCss.disabled = mode !== "utilitarian";
+      }
+      for (const control of controls) {
+        control.checked = control.value === mode;
+      }
+      try {
+        localStorage.setItem(storageKey, mode);
+      } catch {
+        // Preference persistence is optional progressive enhancement.
+      }
+    }
+
+    try {
+      const stored = localStorage.getItem(storageKey) || localStorage.getItem(legacyKey);
+      if (stored) applyMode(stored);
+    } catch {
+      // The form still works for the current page session.
+    }
+
+    for (const control of controls) {
+      control.addEventListener("change", () => applyMode(control.value));
+    }
+  })();
+</script></nav><header class="site-header"><p class="site-header__title">lgallindo.github.io</p></header><main id="main" class="shell-main"><section class="tui-panel"><h1>Projects</h1><p>One project for now.</p></section><section class="tui-panel"><article class="project-block"><h1>ArclengthContinuation</h1><p class="project-meta"><strong>WIP</strong> · <a href="https://github.com/lgallindo/arclengthcontinuation">github.com/lgallindo/arclengthcontinuation</a></p><p>A copyleft-oriented fork of Continue for AI-assisted development across the CLI, VS Code, and JetBrains. Work in progress; no releases yet.</p><h2>Prerequisites</h2><ul class="prereq-list"><li>bun</li><li>Node-compatible toolchain for workspace packages</li><li>JDK 21 for the IntelliJ plugin build (wrapper targets JVM 17 bytecode)</li></ul><section><h2>Clone</h2><pre><code>git clone https://github.com/lgallindo/arclengthcontinuation.git
+cd arclengthcontinuation</code></pre></section><section><h2>Build</h2><p>Verified baseline from the project README:</p><pre><code>cd packages/continue-sdk/typescript
+bun run build
+cd ../../../extensions/cli
+bun run build
+cd ../vscode
+bun run esbuild
+cd ../intellij
+JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 \
+GRADLE_USER_HOME=&quot;$PWD/.gradle-home&quot; \
+./gradlew buildPlugin --stacktrace</code></pre></section><section><h2>Run</h2><p>Prefer local build output. Published install scripts may target other org URLs.</p><pre><code>cd extensions/cli
+bun run start
+# or: node dist/alc.js
+# VS Code: after bun run esbuild in extensions/vscode,
+# package/install locally; no marketplace release yet.</code></pre></section></article></section></main></body></html>

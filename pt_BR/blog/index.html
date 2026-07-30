@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="pt-BR" data-mode="phosphor"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="ArclengthContinuation — notas de build e execução."><title>Ainda não | lgallindo.github.io</title><link rel="alternate" hreflang="en-US" href="https://lgallindo.github.io/en_US/blog/"><link rel="alternate" hreflang="pt-BR" href="https://lgallindo.github.io/pt_BR/blog/"><link rel="alternate" hreflang="x-default" href="https://lgallindo.github.io/"><link id="plain-theme-css" rel="stylesheet" href="/vendor/simple.min.css" disabled><link rel="stylesheet" href="/_astro/TuiPanel.DcHPDIY_.css"></head><body><a class="skip-link" href="#main">Pular para o conteúdo principal</a><nav class="status-line" aria-label="Principal"><ul class="status-line__nav"><li><a href="/pt_BR/">Início</a></li><li><a href="/pt_BR/projects/">Projetos</a></li></ul><ul class="status-line__locales" aria-label="Idioma"><li><a href="/en_US/blog/">en</a></li><li><a href="/pt_BR/blog/" aria-current="page">pt</a></li></ul><form class="mode-switch" aria-label="Tema"><fieldset><legend>Tema</legend><div class="mode-switch__options"><label class="mode-switch__option"><input type="radio" name="mode" value="phosphor" checked><span>Fósforo</span></label><label class="mode-switch__option"><input type="radio" name="mode" value="modem"><span>Modem</span></label><label class="mode-switch__option"><input type="radio" name="mode" value="utilitarian"><span>Simples</span></label></div></fieldset></form><script>
+  (() => {
+    const root = document.documentElement;
+    const controls = Array.from(document.querySelectorAll('input[name="mode"]'));
+    const allowed = new Set(["phosphor", "modem", "utilitarian"]);
+    const storageKey = "theme-mode";
+    const legacyKey = "interaction-mode";
+
+    function applyMode(mode) {
+      if (!allowed.has(mode)) return;
+      root.dataset.mode = mode;
+      const plainCss = document.getElementById("plain-theme-css");
+      if (plainCss) {
+        plainCss.disabled = mode !== "utilitarian";
+      }
+      for (const control of controls) {
+        control.checked = control.value === mode;
+      }
+      try {
+        localStorage.setItem(storageKey, mode);
+      } catch {
+        // Preference persistence is optional progressive enhancement.
+      }
+    }
+
+    try {
+      const stored = localStorage.getItem(storageKey) || localStorage.getItem(legacyKey);
+      if (stored) applyMode(stored);
+    } catch {
+      // The form still works for the current page session.
+    }
+
+    for (const control of controls) {
+      control.addEventListener("change", () => applyMode(control.value));
+    }
+  })();
+</script></nav><header class="site-header"><p class="site-header__title">lgallindo.github.io</p></header><main id="main" class="shell-main"><section class="tui-panel"><h1>Ainda não</h1><p>Sem conteúdo aqui ainda.</p><p><a href="/pt_BR/">Voltar ao início</a></p></section></main></body></html>

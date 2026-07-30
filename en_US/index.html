@@ -34,4 +34,18 @@
       control.addEventListener("change", () => applyMode(control.value));
     }
   })();
-</script></nav><header class="site-header"><p class="site-header__title">lgallindo.github.io</p></header><main id="main" class="shell-main"><nav id="locale-gateway" class="tui-panel" aria-labelledby="locale-gateway-label"><span class="visually-hidden" id="locale-gateway-label">Language</span><h1>Language</h1><p>Choose a language.</p><ul class="command-list"><li><a href="/en_US/">English</a></li><li><a href="/pt_BR/">Português</a></li></ul></nav></main></body></html>
+</script></nav><header class="site-header"><p class="site-header__title">lgallindo.github.io</p></header><main id="main" class="shell-main"><section class="tui-panel"><article class="project-block"><h1>ArclengthContinuation</h1><p class="project-meta"><strong>WIP</strong> · <a href="https://github.com/lgallindo/arclengthcontinuation">github.com/lgallindo/arclengthcontinuation</a></p><p>A copyleft-oriented fork of Continue for AI-assisted development across the CLI, VS Code, and JetBrains. Work in progress; no releases yet.</p><h2>Prerequisites</h2><ul class="prereq-list"><li>bun</li><li>Node-compatible toolchain for workspace packages</li><li>JDK 21 for the IntelliJ plugin build (wrapper targets JVM 17 bytecode)</li></ul><section><h2>Clone</h2><pre><code>git clone https://github.com/lgallindo/arclengthcontinuation.git
+cd arclengthcontinuation</code></pre></section><section><h2>Build</h2><p>Verified baseline from the project README:</p><pre><code>cd packages/continue-sdk/typescript
+bun run build
+cd ../../../extensions/cli
+bun run build
+cd ../vscode
+bun run esbuild
+cd ../intellij
+JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64 \
+GRADLE_USER_HOME=&quot;$PWD/.gradle-home&quot; \
+./gradlew buildPlugin --stacktrace</code></pre></section><section><h2>Run</h2><p>Prefer local build output. Published install scripts may target other org URLs.</p><pre><code>cd extensions/cli
+bun run start
+# or: node dist/alc.js
+# VS Code: after bun run esbuild in extensions/vscode,
+# package/install locally; no marketplace release yet.</code></pre></section></article></section></main></body></html>
