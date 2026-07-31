@@ -25,7 +25,11 @@ For global agent-definition rules, interviews, bibliography requirements, and ma
 * `office_hours`: Global product-discovery and idea-reframing agent replacing the role normally served by gstack `/office-hours`.
 * `plan_ceo_review`: Global CEO/founder strategic review agent replacing the role normally served by gstack `/plan-ceo-review`.
 * `review`: Global pre-landing diff reviewer replacing the role normally served by gstack `/review`.
+* `e2e_tester`: Global browser E2E specialist (Playwright); project Cursor agent `.cursor/agents/pages-e2e.md`.
+* `pages_qa`: Global static-site / GitHub Pages release QA; project Cursor agent `.cursor/agents/pages-qa.md`.
 
+* Project skill for both: `.cursor/skills/pages-e2e/`.
+* Spec Kit: local templates under `.specify/`; feature specs under `specs/` (bootstrap from `~/code/foss/spec-kit`, no `init --force`).
 ---
 
 ## 3. Directory Structure & Navigation

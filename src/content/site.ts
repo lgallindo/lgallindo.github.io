@@ -99,8 +99,6 @@ const arclengthEn: Project = {
     },
     {
       heading: "Run",
-      intro:
-        "Prefer local build output. Published install scripts may target other org URLs.",
       commands: [
         "cd extensions/cli",
         "bun run start",
@@ -150,8 +148,6 @@ const arclengthPt: Project = {
     },
     {
       heading: "Run",
-      intro:
-        "Prefira o build local. Scripts de instalação publicados podem apontar para outras orgs.",
       commands: [
         "cd extensions/cli",
         "bun run start",

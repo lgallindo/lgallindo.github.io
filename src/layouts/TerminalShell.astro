@@ -46,9 +46,6 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en_US|pt_BR)(?=\/|$)/,
       modeLabel={copy.shell.modeLabel}
       modes={copy.modes}
     />
-    <header class="site-header">
-      <p class="site-header__title">{copy.title}</p>
-    </header>
     <main id="main" class="shell-main">
       <slot />
     </main>

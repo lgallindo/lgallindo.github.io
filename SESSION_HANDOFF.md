@@ -138,3 +138,7 @@
 - **[DONE]** Actor: Codex. Received user instruction to update the handoff, commit, push, and then terminate for hardware-maintenance downtime.
 - **[DONE]** Actor: Codex. Planned follow-up actions: stage the full current repository state, run a cached diff integrity check, create a descriptive Conventional Commit, and push the current branch `feat/astro-mvp-foundation`.
 - **[NOTE]** Actor: Codex. No repository files besides `SESSION_HANDOFF.md` were modified in this turn yet; commit/push has not started at this point in the log.
+
+## [2026-07-30T14:50:00-03:00]
+- **[DONE]** Actor: Cursor Composer. Added Playwright E2E (`e2e/*`, `playwright.config.ts`), scripts `test`/`test:e2e`/`test:e2e:live`, agents `e2e_tester`/`pages_qa`, Cursor agents + skill `pages-e2e`, and `docs/PLAN_20260730T175000Z_PAGES_E2E.md`. P0 coverage: `/_astro` CSS HTTP 200.
+- **[NEXT]** Run `bun run test:e2e` and keep green on CSS/layout changes.
