@@ -268,6 +268,7 @@
     display: inline-flex;
     flex-wrap: wrap;
     border: 1px solid var(--color-panel-border);
+    font-size: 0; /* kill whitespace flex gaps between <label> nodes */
   }
 
   .mode-switch__option {
@@ -289,6 +290,7 @@
     min-width: 7ch;
     text-align: center;
     border-inline-end: 1px solid var(--color-panel-border);
+    font-size: 1rem;
   }
 
   .mode-switch__option:last-child span {
@@ -305,6 +307,44 @@
     display: inline-block;
     min-width: 5ch;
     padding: 0.1rem 0.25rem;
+  }
+
+  /* Locale chips: match Theme radio strip (no flex gap — borders are the separators). */
+  .status-line ul.status-line__locales {
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 1px solid var(--color-panel-border);
+    font-size: 0; /* kill whitespace flex gaps between <li> nodes */
+  }
+
+  .status-line__locales li {
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+
+  .status-line__locales a {
+    color: var(--color-fg);
+    text-decoration: none;
+    margin: 0;
+    min-width: 4ch;
+    padding: 0.15rem 0.55rem;
+    text-align: center;
+    border-inline-end: 1px solid var(--color-panel-border);
+    line-height: 1.25;
+    font-size: 1rem;
+  }
+
+  .status-line__locales li:last-child a {
+    border-inline-end: 0;
+  }
+
+  .status-line__locales a:hover,
+  .status-line__locales a:focus-visible {
+    color: var(--color-selection-fg);
+    background: var(--color-selection-bg);
+    text-shadow: none;
   }
 
   .status-line a[aria-current="page"] {
@@ -662,3 +702,112 @@
     }
   }
 }
+
+/*
+  Unlayered chrome quarantine: vendor/simple.min.css is unlayered and otherwise
+  beats @layer components/modes (cascade layers). Keep status-line spacing stable
+  in Plain (utilitarian) when Simple.css is enabled.
+*/
+[data-mode="utilitarian"] .status-line,
+[data-mode="utilitarian"] .status-line * {
+  box-sizing: border-box;
+}
+
+[data-mode="utilitarian"] .status-line ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  gap: var(--space-2);
+}
+
+[data-mode="utilitarian"] .status-line ul.status-line__locales {
+  gap: 0;
+}
+
+[data-mode="utilitarian"] .status-line li {
+  margin: 0;
+  padding: 0;
+}
+
+[data-mode="utilitarian"] .status-line a {
+  margin: 0;
+  color: var(--color-fg);
+  text-decoration: none;
+}
+
+[data-mode="utilitarian"] .status-line a[aria-current="page"],
+[data-mode="utilitarian"] .status-line__locales a:hover,
+[data-mode="utilitarian"] .status-line__locales a:focus-visible {
+  color: var(--color-selection-fg);
+  background: var(--color-selection-bg);
+}
+
+[data-mode="utilitarian"] .mode-switch__option span {
+  margin: 0;
+  color: var(--color-fg);
+}
+
+[data-mode="utilitarian"] .mode-switch__option:has(input:checked) span,
+[data-mode="utilitarian"] .mode-switch__option input:focus-visible + span {
+  color: var(--color-selection-fg);
+  background: var(--color-selection-bg);
+}
+
+/* Simple.css: label{display:block}, input{width:100%;margin-bottom:.5rem}, fieldset chrome */
+[data-mode="utilitarian"] .mode-switch,
+[data-mode="utilitarian"] .mode-switch fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  max-width: none;
+}
+
+[data-mode="utilitarian"] .mode-switch__options {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+[data-mode="utilitarian"] .mode-switch__option {
+  display: inline-flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  max-width: none;
+}
+
+[data-mode="utilitarian"] .mode-switch__option span {
+  margin: 0;
+  color: var(--color-fg);
+  font-size: 0.95rem;
+}
+
+[data-mode="utilitarian"] .status-line ul.status-line__locales {
+  gap: 0;
+  font-size: 0;
+}
+
+[data-mode="utilitarian"] .status-line__locales a {
+  font-size: 0.95rem;
+}
+
+[data-mode="utilitarian"] .mode-switch__option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  appearance: none;
+  border: 0;
+  box-shadow: none;
+}
+
+
