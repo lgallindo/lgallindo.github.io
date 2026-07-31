@@ -148,3 +148,6 @@
 - **[DONE]** Phase B local-only: xterm sandbox at `/[locale]/sandbox/`, E2E green (8/8). **Not** deployed to master.
 - **[DONE]** Phase C plan-only: `specs/003-arclength-real-binary-c/spec.md` (recommend remote restricted runner; WASM later).
 - **[NEXT]** User go-ahead to deploy sandbox to Pages; or start Phase C runner design elsewhere.
+
+## [2026-07-31T15:22:00-03:00]
+- **[DONE]** Full train documented (see foss CONVERSATION_20260731T182226Z…). D30 banners synced; deploy follows.
