@@ -59,6 +59,12 @@ type PageCopy = {
     heading: string;
     intro: string;
   };
+  sandbox: {
+    heading: string;
+    blurb: string;
+    promptHint: string;
+    navLabel: string;
+  };
 };
 
 const arclengthEn: Project = {
@@ -178,6 +184,7 @@ export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
     nav: [
       { label: "Home", href: "/en_US/" },
       { label: "Projects", href: "/en_US/projects/" },
+      { label: "Sandbox", href: "/en_US/sandbox/" },
     ],
     home: {
       heading: "ArclengthContinuation",
@@ -201,6 +208,13 @@ export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
       heading: "Not yet",
       intro: "No content here yet.",
     },
+    sandbox: {
+      heading: "Arclength sandbox",
+      blurb:
+        "A minimal restricted web terminal. Scripted responses only — the real Arclength CLI is not running here.",
+      promptHint: "Try: help · version · alc --help",
+      navLabel: "Sandbox",
+    },
   },
   pt_BR: {
     title: "lgallindo.github.io",
@@ -220,6 +234,7 @@ export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
     nav: [
       { label: "Início", href: "/pt_BR/" },
       { label: "Projetos", href: "/pt_BR/projects/" },
+      { label: "Sandbox", href: "/pt_BR/sandbox/" },
     ],
     home: {
       heading: "ArclengthContinuation",
@@ -242,6 +257,13 @@ export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
     emptySection: {
       heading: "Ainda não",
       intro: "Sem conteúdo aqui ainda.",
+    },
+    sandbox: {
+      heading: "Sandbox Arclength",
+      blurb:
+        "Terminal web mínimo e restrito. Só respostas roteirizadas — o CLI real do Arclength não roda aqui.",
+      promptHint: "Tente: help · version · alc --help",
+      navLabel: "Sandbox",
     },
   },
 };

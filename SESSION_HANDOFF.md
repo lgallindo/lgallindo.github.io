@@ -142,3 +142,9 @@
 ## [2026-07-30T14:50:00-03:00]
 - **[DONE]** Actor: Cursor Composer. Added Playwright E2E (`e2e/*`, `playwright.config.ts`), scripts `test`/`test:e2e`/`test:e2e:live`, agents `e2e_tester`/`pages_qa`, Cursor agents + skill `pages-e2e`, and `docs/PLAN_20260730T175000Z_PAGES_E2E.md`. P0 coverage: `/_astro` CSS HTTP 200.
 - **[NEXT]** Run `bun run test:e2e` and keep green on CSS/layout changes.
+
+## [2026-07-31T13:21:00-03:00]
+- **[DONE]** Actor: Cursor Composer. Phase A shipped: skip-link, hostname header removed, Modem Blue BBS, Plain hardening, run-2 banners, sausage copy → `.local/notes`. Spec Kit bootstrap + `specs/001`. Commit `b3e6277` on feat; Pages deploy `3a662fe` on master.
+- **[DONE]** Phase B local-only: xterm sandbox at `/[locale]/sandbox/`, E2E green (8/8). **Not** deployed to master.
+- **[DONE]** Phase C plan-only: `specs/003-arclength-real-binary-c/spec.md` (recommend remote restricted runner; WASM later).
+- **[NEXT]** User go-ahead to deploy sandbox to Pages; or start Phase C runner design elsewhere.

@@ -1,0 +1,23 @@
+---
+import TerminalShell from "../../../layouts/TerminalShell.astro";
+import ArclengthSandbox from "../../../components/sandbox/ArclengthSandbox.astro";
+import { publicCopy } from "../../../content/site";
+import { publicLocales, type PublicLocaleCode } from "../../../i18n/locales";
+
+export function getStaticPaths() {
+  return publicLocales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as PublicLocaleCode;
+const copy = publicCopy[locale];
+const sandbox = copy.sandbox;
+---
+
+<TerminalShell locale={locale} title={`${sandbox.heading} | ${copy.title}`} description={sandbox.blurb} nav={copy.nav}>
+  <ArclengthSandbox
+    locale={locale}
+    title={sandbox.heading}
+    blurb={sandbox.blurb}
+    promptLabel={sandbox.promptHint}
+  />
+</TerminalShell>
