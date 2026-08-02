@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /toki-pona/
+Disallow: /en_US/about/
+Disallow: /en_US/blog/
+Disallow: /pt_BR/about/
+Disallow: /pt_BR/blog/
+
+Sitemap: https://lgallindo.github.io/sitemap.xml
