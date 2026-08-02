@@ -55,6 +55,17 @@ site):
 6. **Logistics** — anything staying explicitly out of scope (resume PDF? contact form?
    analytics? favicon — already deferred per PIT-005).
 
+## Settled decisions so far
+
+- **Audience (Q1):** three real audiences — anarchist friends, prospective employers, wife
+  + kids. Anarchist friends and employers get the *same* uncompromising technical
+  content; wife/kids get a plain-language usability path.
+- **Hard tone constraint (Q1):** no explicit mention of anarchism or employment/job-seeking
+  anywhere in written copy — not even subtext. Subtext allowed only within code itself
+  (licensing, project choices, commit style). No personal-branding/resume-style copy.
+  Audience needs are met through content depth/structure, not through differentiated
+  messaging.
+
 ## Status
 
-Phase 1, question 1 — not yet asked. See `log.md` for the live transcript once underway.
+Phase 1, question 2 — in progress. See `log.md` for the live transcript.
