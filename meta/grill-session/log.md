@@ -54,3 +54,20 @@ short, jargon-free "what this is / how to just run it" section immediately after
 title/banner, followed by the existing technical Prerequisites → Clone → Build → Run
 content, unchanged. Single page, single track, ordered by increasing technical depth. No
 separate family-facing page.
+
+## Q3 — About page fate (2026-08-03)
+
+**Question:** Given the no-narrative/no-bio constraint, what happens to the disabled
+`/about/` page — repurpose as a neutral colophon (tech stack, license, how the site is
+built — about the site, not the person), or drop it entirely?
+
+**Recommended answer offered:** Repurpose as a short colophon. Gives the URL a legitimate
+purpose without violating the no-narrative constraint.
+
+**Actual answer:** Confirmed the colophon approach — "do it" — but explicitly **deferred**:
+wait until the site has three projects before implementing.
+
+**Settled decision:** `/about/` (en_US + pt_BR) becomes a minimal colophon page (stack,
+license, build/deploy tooling — nothing biographical). **Trigger: do not implement until a
+third project is on the site** (currently 1: ArclengthContinuation; next: l'homme révolté;
+a third is not yet named). Tracked in `plan.md`'s Deferred Items list so it isn't lost.

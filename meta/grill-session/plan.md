@@ -68,6 +68,13 @@ site):
 - **Page structure (Q2):** every project page is single-track, progressive disclosure —
   plain-language "what/how to run" blurb first, then the existing technical
   Prerequisites/Clone/Build/Run content unchanged. No separate family-facing page.
+- **About page (Q3):** becomes a short colophon (stack/license/tooling, no bio) — but
+  deferred, see Deferred Items below.
+
+## Deferred items (settled decision, timing not yet)
+
+- **`/about/` → colophon** (Q3, 2026-08-03): implement once the site has **three**
+  projects (currently 1, l'homme révolté confirmed next as #2). Not yet triggered.
 
 ## Status
 
