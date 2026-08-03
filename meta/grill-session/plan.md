@@ -83,6 +83,8 @@ site):
   and critically no mention of the source project's own political/philosophical framing
   (Q1's no-politics-in-copy rule governs what *this site* writes, independent of what a
   linked project's own README says about itself).
+- **Teaser wording locked (Q8):** "L'Homme Révolté — a raycasted FPS engine built to run
+  on almost anything."
 
 ## Open questions carried from the IA plan (not yet asked)
 

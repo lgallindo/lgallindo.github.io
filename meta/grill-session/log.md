@@ -161,3 +161,16 @@ telemetry) — noted but **not used** in the proposed teaser line, since Q1's co
 writes, regardless of what the linked project's own README says about itself. Already
 deployed publicly and independently at `lgallindo.github.io/lhomme-revolte/` (its own
 repo's GitHub Pages project-page, not part of this repo).
+
+## Q8 — Exact teaser wording (2026-08-03)
+
+**Question:** Proposed: "L'Homme Révolté — a raycasted FPS engine built to run on almost
+anything." Use as-is, or trim further (e.g. drop "raycasted"/"FPS" too)?
+
+**Recommended answer offered:** Use as-is.
+
+**Actual answer:** As-is, confirmed.
+
+**Settled decision:** Home teaser text is locked: **"L'Homme Révolté — a raycasted FPS
+engine built to run on almost anything."** Not yet implemented — waiting on the Q4/Q6
+restructuring (per-project URLs + home's own list) to actually be built.
