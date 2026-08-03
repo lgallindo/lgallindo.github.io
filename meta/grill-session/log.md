@@ -234,3 +234,22 @@ honest ordering over arbitrary.
 added to the site, regardless of WIP/teaser-vs-full status. Whatever was added most
 recently shows first. (Concretely: once l'homme révolté's teaser is added, it will sit
 *above* ArclengthContinuation, since it'll be the newer addition.)
+
+## Q12 — Tone & visual direction (2026-08-03)
+
+**Question:** Should the existing playful glitch/CRT voice carry through consistently into
+all new content, or get dialed back for "no compromises" technical content?
+
+**Recommended answer offered:** Consistent everywhere — it's a deliberate identity, not
+sloppiness; splitting registers risks reading as two glued-together sites.
+
+**Actual answer:** Confirmed consistency, plus a standing process addition: **have
+specialized theming agents review each change** going forward.
+
+**Settled decision:** Visual/voice consistency stays uniform across the whole site, no
+"serious vs. playful" split. **New standing process rule:** from now on, changes touching
+site content/markup/styling get a dedicated theming-consistency review pass (delegated to
+subagent(s)) before being treated as done — not just designed by whoever writes the
+change. Recorded in `PROJECT_RULES.md` and the assistant's memory system so it isn't
+forgotten in future sessions. First application: reviewing the currently-pending,
+uncommitted batch (IMP-002/003/008, Q5's speedrun + "New here?" panels) retroactively.

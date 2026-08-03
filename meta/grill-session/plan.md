@@ -106,6 +106,12 @@ site):
 6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger. **Last
    open item from the IA plan.**
 
+## Standing process rules (added mid-session, apply going forward)
+
+- **Theming-consistency review (Q12, 2026-08-03):** any change touching site
+  content/markup/styling gets a dedicated theming-consistency review pass (delegated to
+  subagent(s)) before being considered done. See `PROJECT_RULES.md`.
+
 ## Deferred items (settled decision, timing not yet)
 
 - **`/about/` → colophon** (Q3, 2026-08-03): implement once the site has **three**
