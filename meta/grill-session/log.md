@@ -219,6 +219,16 @@ via `git status`/`git check-ignore` that none of the excluded files appear as un
 registry for the whole workspace — distinct from the TLA registry this assistant
 maintains in its own memory system. Not reconciled; flagged for the user.
 
+## Session end — hardware maintenance (2026-08-03)
+
+Stopped for a planned hardware maintenance shutdown, not a natural pause in the
+interview. Full pending-state summary in `plan.md`'s "Session end" section. Short
+version: Phases 1 and 3 settled; Phases 2 and 4 never opened; the entire IA
+restructuring (Q4/Q6/Q7/Q8/Q11) is settled but unbuilt; three open decisions remain
+(status vocabulary, `alc`/`cn` naming, direct-call runner sign-off); a batch of
+theming-reviewed content changes sits local-only, ready to ship on request. Cross-
+workspace handoff also logged to `~/code/research/bureaucracy/SESSION_HANDOFF.md`.
+
 ## Q11 — Card ordering (2026-08-03)
 
 **Question:** Once l'homme révolté's teaser joins Arclength, how should the home/index

@@ -117,7 +117,45 @@ site):
 - **`/about/` → colophon** (Q3, 2026-08-03): implement once the site has **three**
   projects (currently 1, l'homme révolté confirmed next as #2). Not yet triggered.
 
-## Status
+## Session end (2026-08-03) — hardware maintenance shutdown
 
-Phase 1 settled. Phase 3 (content architecture / nav) question in progress — see `log.md`
-for the live transcript.
+Stopping here for planned hardware maintenance, not a natural stopping point in the
+interview. Full state for whoever resumes:
+
+**Committed + pushed to `master`:** `robots.txt`/`sitemap.xml`, canonical tags, this
+dossier through Q12 + both theming-review outcomes, `meta/CONTEXT.md`,
+`meta/sandbox-options.md`, `meta/multi-project-ia-plan.md`,
+`meta/arclength-sandbox-fidelity-plan.md`. `PROJECT_RULES.md` exists at repo root but is
+deliberately git-excluded (Q10) — not visible from a fresh clone.
+
+**Local-only, uncommitted (reviewed clean, ready to ship on request):** about/blog
+noindex-disable, toki-pona Arclength mention, sixel-deck split + Run reorder, sandbox
+speedrun, "No build yet" family panel.
+
+**Settled but not implemented:** the whole Q4/Q6/Q7/Q8/Q11 IA restructuring — per-project
+URLs, `/projects/` as an index, home's own curated list with the l'homme révolté teaser,
+reverse-chronological ordering. This is the single biggest piece of unimplemented, fully-
+settled work.
+
+**Open decisions, unresolved:**
+- Status vocabulary beyond `WIP` (bundle with the Q3 three-project trigger) — last item
+  from the original IA-plan open-questions list.
+- **New:** the sandbox says `alc --help` but the real CLI binary is `cn`
+  (`meta/arclength-sandbox-fidelity-plan.md`) — decide keep-as-is (there's an unshipped
+  `V-PEND-004` rebrand item) or fix the sandbox copy now.
+- **New:** whether to pursue a dedicated direct-call runner so the sandbox can make some
+  real calls to the CLI — recommendation is *not* via the VPS (recent Gitea compromise,
+  open remediation items), build a fresh runner instead, pending explicit sign-off.
+- **New:** `meta/sandbox-spec.md` (written this session before discovering the real
+  `specs/002`/`specs/003` on `origin/feat/astro-mvp-foundation` already existed) is
+  redundant — keep as a pointer, or delete it.
+
+**Grilling itself:** Phase 1 (positioning) and Phase 3 (content architecture) are fully
+settled. Phase 2 (narrative & scope) and Phase 4 (per-project deep dives) were never
+opened. Resume with Phase 2, or wherever the operator wants to pick back up — no specific
+next question was queued.
+
+Cross-workspace handoff entry also logged to
+`~/code/research/bureaucracy/SESSION_HANDOFF.md` (2026-08-03T11:00:55-0300, event type
+`documentation`) per that repo's own convention, for continuity with other agents working
+in this workspace.
