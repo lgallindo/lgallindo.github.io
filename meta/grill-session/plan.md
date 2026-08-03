@@ -72,7 +72,18 @@ site):
   deferred, see Deferred Items below.
 - **Nav/IA (Q4):** each project gets its own URL; `/projects/` becomes an index; home page
   stops duplicating full project content. Detailed UX/DX/AX plan delegated to a subagent —
-  see `meta/multi-project-ia-plan.md` once written.
+  landed at `meta/multi-project-ia-plan.md` (311 lines, not yet implemented).
+- **Zero-release WIP content (Q5):** family-facing blurb points to `/sandbox/`, honestly
+  labeled; sandbox got a real 4-command "speedrun." Implemented locally, uncommitted.
+
+## Open questions carried from the IA plan (not yet asked)
+
+1. Home page vs. `/projects/` index — same content/shared partial, or different?
+2. Card ordering on the index once there are 2+ projects.
+3. Any existing inbound links to `/projects/` expecting the old Arclength-write-up content?
+4. Where should `PROJECT_RULES.md`/`meta/CONTEXT.md` live — here, or the real Astro source repo?
+5. ~~Non-technical WIP preview~~ — resolved by Q5 (sandbox + speedrun).
+6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger.
 
 ## Deferred items (settled decision, timing not yet)
 

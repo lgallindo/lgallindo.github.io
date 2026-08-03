@@ -90,3 +90,33 @@ restructuring — delegated to a subagent rather than answered inline (see
 `/projects/` becomes an index page. Home page stops duplicating full project content.
 Exact slug scheme, template, and cross-cutting UX/DX/AX conventions are being drafted by a
 subagent, not decided ad hoc mid-interview.
+
+**Follow-up (delegated plan landed):** `meta/multi-project-ia-plan.md` (311 lines) —
+recommends `<locale>/projects/<slug>/`, a `meta/projects/<slug>.json` sidecar as single
+source of truth for facts duplicated between card and detail page, and a new tracked
+`PROJECT_RULES.md`/`meta/CONTEXT.md` for agent conventions (found the existing
+`AGENTS.md`/`CLAUDE.md` at repo root are untracked, controller-local, explicitly
+read-only overlays — not the place for site-specific rules). Raised 6 open questions,
+one of which (non-technical WIP preview via `/sandbox/`) Q5 below already answers.
+
+## Q5 — Family-facing content for a zero-release project (2026-08-03)
+
+**Question:** ArclengthContinuation has no release yet — what should the family-facing
+"how to just run it" section say right now?
+
+**Recommended answer offered:** Point to `/sandbox/` as a safe, honestly-labeled preview
+("simulated, real tool not released yet") rather than leaving the section blank.
+
+**Actual answer:** Confirmed — the sandbox. Additionally requested a "speedrun" for it.
+
+**Settled decision + implemented (uncommitted, local preview only):** Inspected the
+sandbox's actual bundled command map to keep this honest rather than invented — the real
+command set is exactly `help` / `version` / `alc --help` / `clear`, everything else is
+rejected by a blocklist regex. Added:
+- A "60-second speedrun" (the 4 real commands, in order) directly on `/sandbox/` and
+  `/pt_BR/sandbox/`, replacing the old one-line hint.
+- A short "New here?" panel on the project pages (`en_US`/`pt_BR` `index.html` and
+  `projects/index.html`, right after the `<h1>`, before the technical content) pointing to
+  the sandbox, honestly framed as "no release yet."
+Not yet committed — sitting alongside the other local-preview-only changes (IMP-002,
+IMP-003, IMP-008) until told to ship them.
