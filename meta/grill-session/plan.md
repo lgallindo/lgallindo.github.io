@@ -70,6 +70,9 @@ site):
   Prerequisites/Clone/Build/Run content unchanged. No separate family-facing page.
 - **About page (Q3):** becomes a short colophon (stack/license/tooling, no bio) — but
   deferred, see Deferred Items below.
+- **Nav/IA (Q4):** each project gets its own URL; `/projects/` becomes an index; home page
+  stops duplicating full project content. Detailed UX/DX/AX plan delegated to a subagent —
+  see `meta/multi-project-ia-plan.md` once written.
 
 ## Deferred items (settled decision, timing not yet)
 

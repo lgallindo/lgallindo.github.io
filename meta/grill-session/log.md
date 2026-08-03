@@ -71,3 +71,22 @@ wait until the site has three projects before implementing.
 license, build/deploy tooling — nothing biographical). **Trigger: do not implement until a
 third project is on the site** (currently 1: ArclengthContinuation; next: l'homme révolté;
 a third is not yet named). Tracked in `plan.md`'s Deferred Items list so it isn't lost.
+
+## Q4 — Nav/IA for a growing project count (2026-08-03)
+
+**Question:** Should `/projects/` become an index (short summary + link per project, each
+project getting its own URL like `/projects/arclength/`), or should projects keep living
+inline, stacked on both `/projects/` and the home page as today?
+
+**Recommended answer offered:** Index — duplicating multiple full write-ups on both the
+home page and one long `/projects/` page won't scale past project #2.
+
+**Actual answer:** Confirmed — each project gets its own URL. Additionally requested a
+plan covering **UX, DX, and Agent Xperience (AX)** improvements tied to this
+restructuring — delegated to a subagent rather than answered inline (see
+`meta/multi-project-ia-plan.md` once it lands).
+
+**Settled decision:** Each project gets its own URL (e.g. `/en_US/projects/arclength/`).
+`/projects/` becomes an index page. Home page stops duplicating full project content.
+Exact slug scheme, template, and cross-cutting UX/DX/AX conventions are being drafted by a
+subagent, not decided ad hoc mid-interview.
