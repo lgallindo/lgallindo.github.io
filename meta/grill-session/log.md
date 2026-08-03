@@ -174,3 +174,19 @@ anything." Use as-is, or trim further (e.g. drop "raycasted"/"FPS" too)?
 **Settled decision:** Home teaser text is locked: **"L'Homme Révolté — a raycasted FPS
 engine built to run on almost anything."** Not yet implemented — waiting on the Q4/Q6
 restructuring (per-project URLs + home's own list) to actually be built.
+
+## Q9 — Existing inbound links to `/projects/`? (2026-08-03)
+
+**Question:** Any known links/bookmarks pointing directly at `/projects/` expecting
+today's Arclength write-up, that a URL-meaning-change would break?
+
+**Recommended answer offered:** Probably none — the site's only existed in this form
+since 2026-07-30.
+
+**Actual answer:** "We are stealth until further orders" — nothing has been shared/
+publicized at all yet.
+
+**Settled decision:** No inbound-link concern. The `/projects/` URL's meaning can change
+freely (index instead of the Arclength write-up) — no redirect or "jump straight to
+Arclength" affordance needed. Broader context noted: the site is not being publicized
+right now, so there's no external time pressure on shipping the restructuring.

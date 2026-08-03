@@ -85,12 +85,14 @@ site):
   linked project's own README says about itself).
 - **Teaser wording locked (Q8):** "L'Homme Révolté — a raycasted FPS engine built to run
   on almost anything."
+- **No inbound-link concern (Q9):** site is unpublicized/"stealth" — `/projects/`'s
+  meaning can change freely, no redirect needed.
 
 ## Open questions carried from the IA plan (not yet asked)
 
 1. ~~Home page vs. `/projects/` index~~ — resolved by Q6 (deliberately different, not shared).
 2. Card ordering on the index once there are 2+ projects.
-3. Any existing inbound links to `/projects/` expecting the old Arclength-write-up content?
+3. ~~Existing inbound links~~ — resolved by Q9 (none; site is unpublicized).
 4. Where should `PROJECT_RULES.md`/`meta/CONTEXT.md` live — here, or the real Astro source repo?
 5. ~~Non-technical WIP preview~~ — resolved by Q5 (sandbox + speedrun).
 6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger.
