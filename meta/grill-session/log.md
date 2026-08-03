@@ -120,3 +120,22 @@ rejected by a blocklist regex. Added:
   the sandbox, honestly framed as "no release yet."
 Not yet committed — sitting alongside the other local-preview-only changes (IMP-002,
 IMP-003, IMP-008) until told to ship them.
+
+## Q6 — Home page vs. `/projects/` index relationship (2026-08-03)
+
+**Question:** Should home show its own project list, or be literally the same content as
+`/projects/` until something non-project is worth surfacing differently?
+
+**Recommended answer offered:** Same list, shared source — no reason to hand-maintain two
+lists for one (soon two) projects.
+
+**Actual answer:** Rejected the recommendation — home gets its **own** list, distinct from
+`/projects/`. As of now that own list should include the **most minimal possible spoiler**
+for l'homme révolté, even though it isn't onboarded yet.
+
+**Settled decision:** Home page ≠ `/projects/` index. Home's own list currently =
+[ArclengthContinuation (full treatment), l'homme révolté (minimal spoiler, not yet a real
+page)]. General pattern to carry forward: home surfaces a curated/teaser view, `/projects/`
+is the complete index — they're allowed to diverge, not just a shared partial as the IA
+plan defaulted to. **Not yet implemented** (the actual index/per-project-URL restructuring
+from Q4 hasn't been built yet — still pending remaining open questions).

@@ -76,14 +76,19 @@ site):
 - **Zero-release WIP content (Q5):** family-facing blurb points to `/sandbox/`, honestly
   labeled; sandbox got a real 4-command "speedrun." Implemented locally, uncommitted.
 
+- **Home vs. index (Q6):** home gets its own curated/teaser list, deliberately different
+  from `/projects/` (the complete index). Home currently = Arclength (full) + l'homme
+  révolté (minimal spoiler, not yet onboarded). Not yet implemented.
+
 ## Open questions carried from the IA plan (not yet asked)
 
-1. Home page vs. `/projects/` index — same content/shared partial, or different?
+1. ~~Home page vs. `/projects/` index~~ — resolved by Q6 (deliberately different, not shared).
 2. Card ordering on the index once there are 2+ projects.
 3. Any existing inbound links to `/projects/` expecting the old Arclength-write-up content?
 4. Where should `PROJECT_RULES.md`/`meta/CONTEXT.md` live — here, or the real Astro source repo?
 5. ~~Non-technical WIP preview~~ — resolved by Q5 (sandbox + speedrun).
 6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger.
+7. **New (from Q6): what exactly should the l'homme révolté "minimal spoiler" contain?**
 
 ## Deferred items (settled decision, timing not yet)
 
