@@ -218,3 +218,19 @@ via `git status`/`git check-ignore` that none of the excluded files appear as un
 `CLAUDE.md` (next to the repo clones under `~/code`) defining a cross-session TLA
 registry for the whole workspace — distinct from the TLA registry this assistant
 maintains in its own memory system. Not reconciled; flagged for the user.
+
+## Q11 — Card ordering (2026-08-03)
+
+**Question:** Once l'homme révolté's teaser joins Arclength, how should the home/index
+list order them — manually pinned, or by a mechanical rule (e.g. real-first-then-teasers,
+or reverse-chronological)?
+
+**Recommended answer offered:** Real/released projects first, teasers last, in add order —
+honest ordering over arbitrary.
+
+**Actual answer:** Rejected the recommendation — reverse-chronological, "for most fun."
+
+**Settled decision:** Ordering rule = strict reverse-chronological by when each item was
+added to the site, regardless of WIP/teaser-vs-full status. Whatever was added most
+recently shows first. (Concretely: once l'homme révolté's teaser is added, it will sit
+*above* ArclengthContinuation, since it'll be the newer addition.)

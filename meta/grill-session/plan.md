@@ -99,11 +99,12 @@ site):
 ## Open questions carried from the IA plan (not yet asked)
 
 1. ~~Home page vs. `/projects/` index~~ — resolved by Q6 (deliberately different, not shared).
-2. Card ordering on the index once there are 2+ projects.
+2. ~~Card ordering~~ — resolved by Q11 (strict reverse-chronological, "for most fun").
 3. ~~Existing inbound links~~ — resolved by Q9 (none; site is unpublicized).
 4. ~~Where should `PROJECT_RULES.md`/`meta/CONTEXT.md` live~~ — resolved by Q10 (here, now).
 5. ~~Non-technical WIP preview~~ — resolved by Q5 (sandbox + speedrun).
-6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger.
+6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger. **Last
+   open item from the IA plan.**
 
 ## Deferred items (settled decision, timing not yet)
 
