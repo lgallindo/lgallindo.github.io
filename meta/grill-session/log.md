@@ -35,3 +35,22 @@ research (`research/productivity-marketing-resume-agents.md`) gets used going fo
 its structural techniques (STAR extraction, content-pillar sorting) still apply; its
 tone/framing techniques (branding language, "here's my value proposition" copy) explicitly
 do not.
+
+## Q2 — Content architecture: one track or two? (2026-08-02)
+
+**Question:** Should each project page carry both the plain-language family track and the
+technical peer/employer track on the same page (progressive disclosure — simple blurb up
+top, existing Clone/Build/Run below unchanged), or should the family-friendly path be a
+separate, less prominent page/link?
+
+**Recommended answer offered:** One page, ordered simple → technical. Less to maintain
+than two tracks; fits the existing structure with just a plain-language intro paragraph
+added before Prerequisites.
+
+**Actual answer:** Confirmed as recommended.
+
+**Settled decision:** Every project page (starting with ArclengthContinuation) gets a
+short, jargon-free "what this is / how to just run it" section immediately after the
+title/banner, followed by the existing technical Prerequisites → Clone → Build → Run
+content, unchanged. Single page, single track, ordered by increasing technical depth. No
+separate family-facing page.

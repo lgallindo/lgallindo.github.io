@@ -65,7 +65,11 @@ site):
   (licensing, project choices, commit style). No personal-branding/resume-style copy.
   Audience needs are met through content depth/structure, not through differentiated
   messaging.
+- **Page structure (Q2):** every project page is single-track, progressive disclosure —
+  plain-language "what/how to run" blurb first, then the existing technical
+  Prerequisites/Clone/Build/Run content unchanged. No separate family-facing page.
 
 ## Status
 
-Phase 1, question 2 — in progress. See `log.md` for the live transcript.
+Phase 1 settled. Phase 3 (content architecture / nav) question in progress — see `log.md`
+for the live transcript.
