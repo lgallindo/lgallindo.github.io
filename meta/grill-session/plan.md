@@ -79,6 +79,10 @@ site):
 - **Home vs. index (Q6):** home gets its own curated/teaser list, deliberately different
   from `/projects/` (the complete index). Home currently = Arclength (full) + l'homme
   révolté (minimal spoiler, not yet onboarded). Not yet implemented.
+- **Spoiler depth (Q7):** name + one abstract domain/category line, no feature specifics,
+  and critically no mention of the source project's own political/philosophical framing
+  (Q1's no-politics-in-copy rule governs what *this site* writes, independent of what a
+  linked project's own README says about itself).
 
 ## Open questions carried from the IA plan (not yet asked)
 

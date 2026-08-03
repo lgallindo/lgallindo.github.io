@@ -139,3 +139,25 @@ page)]. General pattern to carry forward: home surfaces a curated/teaser view, `
 is the complete index — they're allowed to diverge, not just a shared partial as the IA
 plan defaulted to. **Not yet implemented** (the actual index/per-project-URL restructuring
 from Q4 hasn't been built yet — still pending remaining open questions).
+
+## Q7 — Spoiler depth for l'homme révolté (2026-08-03)
+
+**Question:** How minimal is "most minimal" for the home teaser — (a) name + bare status
+tag, zero description, or (b) name + one abstract domain/category line, no specifics?
+
+**Recommended answer offered:** (a) — name + status tag only.
+
+**Actual answer:** (b) — name plus one abstract line.
+
+**Settled decision:** Home teaser = project name + a single abstract line (genre/domain
+only, no feature specifics). Exact wording pending exploration (see next entry) —
+explored `~/code/foss/lhomme-revolte/README.md` directly rather than asking the user to
+describe it from scratch: it's a raycasted FPS game engine in C99, built for extreme
+portability (X11/SDL/ncurses/web/Pokitto microcontrollers), zero dependencies, ~200KB
+footprint. Its own README has an explicit "Philosophy" section (named after Camus'
+*L'Homme Révolté*, framed as rebelling against corporate/bloated software, DRM,
+telemetry) — noted but **not used** in the proposed teaser line, since Q1's constraint
+(no political subtext in the site's own copy, even implicit) applies to what *this site*
+writes, regardless of what the linked project's own README says about itself. Already
+deployed publicly and independently at `lgallindo.github.io/lhomme-revolte/` (its own
+repo's GitHub Pages project-page, not part of this repo).
