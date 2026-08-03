@@ -190,3 +190,31 @@ publicized at all yet.
 freely (index instead of the Arclength write-up) — no redirect or "jump straight to
 Arclength" affordance needed. Broader context noted: the site is not being publicized
 right now, so there's no external time pressure on shipping the restructuring.
+
+## Q10 — Where do AX conventions live, and exclude/ignore hygiene (2026-08-03)
+
+**Question:** Create `PROJECT_RULES.md`/`meta/CONTEXT.md` here now, or wait for the real
+Astro source repo?
+
+**Recommended answer offered:** Here, now — no access to the source repo this session,
+and this is where all the decisions have actually been made.
+
+**Actual answer:** Confirmed the recommendation, with a hard correction: `PROJECT_RULES.md`
+(and `CLAUDE.md`, `.local/`, `.claude/`, `AGENTS.md`, `SESSION_HANDOFF.md`) must be
+**excluded, not ignored** — i.e. listed in `.git/info/exclude` (local, untracked), never
+in a committed `.gitignore`.
+
+**Settled decision + implemented:** Found this convention already partially in place —
+`AGENTS.md`/`CLAUDE.md` were already excluded this way, with `AGENTS.md` itself stating
+the same rule (`LOCAL-001`) and explicitly anticipating a `PROJECT_RULES.md`
+(`OP-006`/`007`/`021`). Added the missing entries (`PROJECT_RULES.md`,
+`SESSION_HANDOFF.md`, `.local/`, `.claude/`) to `.git/info/exclude`. Created
+`PROJECT_RULES.md` (repo root, excluded, not tracked — operational rules for agents
+working in this checkout) and `meta/CONTEXT.md` (tracked, public glossary +
+condensed-decisions companion to this log, per the `grill-with-docs` pattern). Verified
+via `git status`/`git check-ignore` that none of the excluded files appear as untracked.
+
+**Noted, not yet resolved:** `AGENTS.md` references a *separate* workspace-level
+`CLAUDE.md` (next to the repo clones under `~/code`) defining a cross-session TLA
+registry for the whole workspace — distinct from the TLA registry this assistant
+maintains in its own memory system. Not reconciled; flagged for the user.

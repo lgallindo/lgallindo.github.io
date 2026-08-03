@@ -87,16 +87,23 @@ site):
   on almost anything."
 - **No inbound-link concern (Q9):** site is unpublicized/"stealth" — `/projects/`'s
   meaning can change freely, no redirect needed.
+- **AX conventions + exclude hygiene (Q10):** `PROJECT_RULES.md` created at repo root
+  (operational rules for agents) and `meta/CONTEXT.md` created (tracked glossary +
+  condensed decisions) — built here now rather than waiting on the Astro source repo.
+  `PROJECT_RULES.md`, `SESSION_HANDOFF.md`, `.local/`, `.claude/` added to
+  `.git/info/exclude` alongside the pre-existing `AGENTS.md`/`CLAUDE.md` entries — hard
+  rule: excluded, never a committed `.gitignore`. Noted, unresolved: a separate
+  workspace-level TLA registry referenced by `AGENTS.md` (outside this repo) that hasn't
+  been reconciled with the assistant's own memory-based registry.
 
 ## Open questions carried from the IA plan (not yet asked)
 
 1. ~~Home page vs. `/projects/` index~~ — resolved by Q6 (deliberately different, not shared).
 2. Card ordering on the index once there are 2+ projects.
 3. ~~Existing inbound links~~ — resolved by Q9 (none; site is unpublicized).
-4. Where should `PROJECT_RULES.md`/`meta/CONTEXT.md` live — here, or the real Astro source repo?
+4. ~~Where should `PROJECT_RULES.md`/`meta/CONTEXT.md` live~~ — resolved by Q10 (here, now).
 5. ~~Non-technical WIP preview~~ — resolved by Q5 (sandbox + speedrun).
 6. Status vocabulary beyond `WIP` — bundle with the Q3 "third project" trigger.
-7. **New (from Q6): what exactly should the l'homme révolté "minimal spoiler" contain?**
 
 ## Deferred items (settled decision, timing not yet)
 
