@@ -253,3 +253,11 @@ subagent(s)) before being treated as done — not just designed by whoever write
 change. Recorded in `PROJECT_RULES.md` and the assistant's memory system so it isn't
 forgotten in future sessions. First application: reviewing the currently-pending,
 uncommitted batch (IMP-002/003/008, Q5's speedrun + "New here?" panels) retroactively.
+
+**Voice-consistency review result (2026-08-03):** about/blog disable, toki-pona mention,
+and the sandbox speedrun all passed as on-voice with no hard-constraint violations. The
+"New here?"/"Chegou agora?" panel was flagged as generic onboarding cliché, off-brand
+relative to the site's dry/deadpan-terminal register — **fixed**: heading changed to
+"No build yet"/"Sem build ainda", body rewritten to use a `clone &amp;&amp; build &amp;&amp; run`
+shell-chaining motif consistent with the site's terminal aesthetic. Visual/markup review
+still pending.
