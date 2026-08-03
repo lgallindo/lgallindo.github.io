@@ -259,5 +259,25 @@ and the sandbox speedrun all passed as on-voice with no hard-constraint violatio
 "New here?"/"Chegou agora?" panel was flagged as generic onboarding cliché, off-brand
 relative to the site's dry/deadpan-terminal register — **fixed**: heading changed to
 "No build yet"/"Sem build ainda", body rewritten to use a `clone &amp;&amp; build &amp;&amp; run`
-shell-chaining motif consistent with the site's terminal aesthetic. Visual/markup review
-still pending.
+shell-chaining motif consistent with the site's terminal aesthetic.
+
+**Visual/markup-consistency review result (2026-08-03):** about/blog and toki-pona
+changes passed clean (no markup impact). Split sixel-deck figures passed (grid had no
+`grid-template-columns` so frames were already single-column; per-figure `aria-label`s
+are an a11y improvement). Two real issues found and **fixed**:
+- The "New here?"/"No build yet" panel reused `.tui-panel`, creating the site's first
+  `.tui-panel`-inside-`.tui-panel` nesting — caused a width mismatch
+  (`--measure-prose` vs. `--measure-wide` via `.tui-panel:has(.sixel-deck)`) and, in
+  `data-mode="modem"`, doubled border/glow/`panel-wipe` animation. Fixed: dropped the
+  `.tui-panel` class, using a plain `<section>` — the same pattern already used for
+  Clone/Build/Run.
+- The sandbox speedrun's `<ol>` used browser-default indentation instead of the site's
+  `.command-list`/`.prereq-list`/`.record-list` convention (`padding-inline-start:
+  1.25rem`). Fixed: added `class="command-list"`.
+
+Noted, not acted on: Run now reads before Clone/Build in document order (from the
+earlier IMP-008 banner/Run reorder, a separate prior instruction) — flagged by the
+reviewer as a content-flow oddity, not a markup defect; left as-is since that ordering
+was deliberately requested.
+
+**Batch now clean per both reviewers — ready to ship whenever told to commit+push.**
