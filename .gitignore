@@ -19,3 +19,6 @@ docs/global_references/gstack_*/
 # Local Parser Temp
 .tmp_uv/
 .uvcache/
+
+# Commit message pipeline (COMMIT-PIPE-001)
+LATEST_COMMIT
