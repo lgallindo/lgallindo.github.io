@@ -1,0 +1,1 @@
+../../bureaucracy/scripts/validate_session_handoff.py

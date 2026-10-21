@@ -1,0 +1,1 @@
+../../bureaucracy/scripts/compact_handoff_monolith.py
