@@ -1,0 +1,266 @@
+---
+/** Client-mounted literary salon (WebLLM + hooks). Use ?mock=1 for stub LLM. */
+---
+
+<div id="salon-app" class="salon-app" data-salon-root></div>
+
+<style is:global>
+  .salon-app,
+  .salon-root {
+    min-height: calc(100vh - var(--status-line-height) - 2rem);
+    height: calc(100vh - var(--status-line-height) - 2rem);
+  }
+
+  .salon-gate {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    padding: var(--space-4);
+    background: var(--color-bg);
+  }
+
+  /* `display: grid` above would otherwise override the [hidden] UA rule and leave
+     an invisible full-screen overlay intercepting clicks on the room. */
+  .salon-gate[hidden] {
+    display: none !important;
+  }
+
+  .salon-room[hidden] {
+    display: none !important;
+  }
+
+  .salon-gate__panel {
+    width: min(42rem, 100%);
+    max-height: calc(100vh - 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-4);
+    border: 1px solid var(--color-panel-border);
+    background: var(--color-chrome-bg);
+    color: var(--color-fg);
+    font-family: var(--font-mono);
+    overflow: hidden;
+  }
+
+  .salon-gate__title {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+
+  .salon-gate__status,
+  .salon-gate__meta,
+  .salon-gate__warn {
+    color: var(--color-muted);
+    max-width: var(--measure-prose);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .salon-gate__warn {
+    color: var(--color-fg);
+  }
+
+  .salon-gate__bar {
+    height: 0.55rem;
+    border: 1px solid var(--color-panel-border);
+    background: #000;
+    flex-shrink: 0;
+  }
+
+  .salon-gate__bar-fill {
+    height: 100%;
+    background: var(--color-accent);
+    width: 0;
+    transition: width 120ms linear;
+  }
+
+  .salon-gate__btn,
+  .salon-send {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--color-bg);
+    background: var(--color-fg);
+    border: 1px solid var(--color-fg);
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    align-self: flex-start;
+  }
+
+  .salon-gate__btn:hover,
+  .salon-send:hover {
+    color: var(--color-bg);
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+  }
+
+  /* Gate: transcript grows; composer stays at bottom of panel */
+  .salon-gate__log {
+    flex: 1 1 auto;
+    min-height: 6rem;
+    max-height: none;
+    overflow: auto;
+    margin: 0;
+    border: 1px solid var(--color-panel-border);
+    padding: var(--space-2);
+    background: #050505;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+  }
+
+  .salon-gate__side {
+    flex-shrink: 0;
+    margin: 0;
+    padding-block-start: var(--space-2);
+    border-block-start: 1px dashed var(--color-panel-border);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Room: cast | chat; chat = banners + transcript + composer (composer last) */
+  .salon-room {
+    display: grid;
+    grid-template-columns: minmax(10rem, 14rem) 1fr;
+    grid-template-rows: 1fr;
+    gap: var(--space-3);
+    height: 100%;
+    min-height: 0;
+    font-family: var(--font-mono);
+    color: var(--color-fg);
+  }
+
+  @media (max-width: 48rem) {
+    .salon-room {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+    }
+  }
+
+  .salon-cast {
+    border: 1px solid var(--color-panel-border);
+    padding: var(--space-2);
+    background: var(--color-chrome-bg);
+    overflow: auto;
+    min-height: 0;
+  }
+
+  .salon-cast__title {
+    font-size: 0.95rem;
+    margin: 0 0 var(--space-2);
+  }
+
+  .salon-cast__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .salon-cast__item {
+    color: var(--color-muted);
+    padding-block: 0.2rem;
+  }
+
+  .salon-cast__item--lit {
+    color: var(--color-accent);
+  }
+
+  .salon-chat {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--space-2);
+    min-width: 0;
+    min-height: 0;
+    height: 100%;
+  }
+
+  .salon-banners:empty {
+    display: none;
+  }
+
+  .salon-transcript {
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid var(--color-panel-border);
+    padding: var(--space-3);
+    background: #050505;
+  }
+
+  .salon-line {
+    margin: 0 0 var(--space-2);
+    line-height: 1.55;
+    max-width: var(--measure-wide);
+  }
+
+  .salon-line--primary {
+    color: var(--color-fg);
+  }
+
+  .salon-line--crosstalk {
+    color: var(--color-muted);
+    padding-inline-start: 1.25rem;
+    font-size: 0.92em;
+  }
+
+  .salon-line--pass {
+    color: var(--color-muted);
+    opacity: 0.55;
+    padding-inline-start: 1.25rem;
+    margin-block: 0.15rem;
+  }
+
+  .salon-line__who {
+    color: var(--color-accent);
+  }
+
+  .salon-line--crosstalk .salon-line__who {
+    color: var(--color-muted);
+  }
+
+  .salon-composer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    flex-shrink: 0;
+  }
+
+  .salon-input {
+    width: 100%;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    color: var(--color-fg);
+    background: #000;
+    border: 1px solid var(--color-panel-border);
+    padding: var(--space-2);
+    resize: vertical;
+  }
+
+  .salon-banner {
+    margin: 0;
+    padding: var(--space-2);
+    border: 1px solid var(--color-panel-border);
+    max-width: var(--measure-prose);
+  }
+
+  .salon-banner--error {
+    border-color: #ff5555;
+    color: #ff8888;
+  }
+
+  .salon-banner--warn {
+    color: var(--color-muted);
+  }
+
+  .salon-banner--info {
+    color: var(--color-accent);
+  }
+</style>
+
+<script>
+  import { mountSalon } from "../../salon/mount";
+
+  const root = document.querySelector<HTMLElement>("[data-salon-root]");
+  if (root) mountSalon(root);
+</script>

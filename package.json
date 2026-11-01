@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/lgallindo/lgallindo.github.io#readme",
   "dependencies": {
+    "@mlc-ai/web-llm": "^0.2.86",
     "@xterm/addon-fit": "^0.11.0",
     "@xterm/xterm": "^6.0.0",
     "astro": "^7.0.3"

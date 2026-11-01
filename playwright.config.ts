@@ -26,10 +26,11 @@ export default defineConfig({
   ],
   webServer: useLocalServer
     ? {
-        command: "bun run build && bun run preview -- --host 127.0.0.1 --port 4321",
+        // serve-dist emits COOP/COEP so salon COI works in local E2E/preview.
+        command: "bun run build && bun scripts/serve-dist.mjs",
         url: "http://127.0.0.1:4321/",
         reuseExistingServer: !process.env.CI,
-        timeout: 180_000,
+        timeout: 300_000,
       }
     : undefined,
 });

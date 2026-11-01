@@ -34,6 +34,7 @@ const pathWithoutLocale = Astro.url.pathname.replace(/^\/(en_US|pt_BR)(?=\/|$)/,
     ))}
     {listed && <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />}
     <link id="plain-theme-css" rel="stylesheet" href="/vendor/simple.min.css" disabled />
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href="#main">{copy.shell.skipToMain}</a>

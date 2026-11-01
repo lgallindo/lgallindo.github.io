@@ -1,0 +1,18 @@
+---
+import TerminalShell from "../../layouts/TerminalShell.astro";
+import SalonApp from "../../components/salon/SalonApp.astro";
+import { publicCopy } from "../../content/site";
+
+const locale = "en_US";
+const copy = publicCopy[locale];
+const title = "Salon — literary chat (WebLLM)";
+const description =
+  "In-browser multi-persona literary salon: sticky cast, programmable hard hooks, WebLLM. No API key.";
+---
+
+<TerminalShell locale={locale} title={title} description={description} nav={copy.nav} listed={false}>
+  {/* COI bootstrap in <head> — may reload once for COOP/COEP via service worker. */}
+  <script slot="head" is:inline src="/coi-serviceworker.js"></script>
+  <h1 class="visually-hidden">Literary salon</h1>
+  <SalonApp />
+</TerminalShell>

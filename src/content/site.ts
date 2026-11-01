@@ -185,6 +185,7 @@ export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
       { label: "Home", href: "/en_US/" },
       { label: "Projects", href: "/en_US/projects/" },
       { label: "Sandbox", href: "/en_US/sandbox/" },
+      { label: "Salon", href: "/salon/" },
     ],
     home: {
       heading: "ArclengthContinuation",
@@ -235,6 +236,7 @@ export const publicCopy: Record<PublicLocaleCode, PageCopy> = {
       { label: "Início", href: "/pt_BR/" },
       { label: "Projetos", href: "/pt_BR/projects/" },
       { label: "Sandbox", href: "/pt_BR/sandbox/" },
+      { label: "Salão", href: "/salon/" },
     ],
     home: {
       heading: "ArclengthContinuation",
